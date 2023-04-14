@@ -43,6 +43,7 @@ public class Sphere extends Circle{
         else if ( choice == "b") createBox();
         else if ( choice == "ep") createEParaboloid();
         else if ( choice == "r") createRing();
+        else if ( choice == "j") createJubah();
         setupVAOVBO();
     }
 
@@ -437,6 +438,21 @@ public class Sphere extends Circle{
             for (double u = -Math.PI; u <= Math.PI ; u += Math.PI /120) {
                 float x = 0.5f * (float) (Math.cos(u));
                 float y = 0.5f * (float) (Math.sin(u));
+                float z = 0.5f * (float) v ;
+                temp.add(new Vector3f(x, y, z));
+            }
+        }
+        this.vertices = temp;
+    }
+
+    public void createJubah(){
+        vertices.clear();
+        ArrayList<Vector3f> temp = new ArrayList<>();
+
+        for (double v = -Math.PI / 2; v <= 0; v += Math.PI / 720) {
+            for (double u = -Math.PI; u <= Math.PI; u += Math.PI / 720) {
+                float x = 0.5f * (float) (v * Math.cos(u));
+                float y = 0.5f * (float) v;
                 float z = 0.5f * (float) v ;
                 temp.add(new Vector3f(x, y, z));
             }
