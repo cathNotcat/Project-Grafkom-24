@@ -28,8 +28,8 @@ public class Main {
     float outerRadius = 1.0f; // outer radius of the torus
     int sides = 32; // number of sides used to draw the torus
     int rings = 16; // number of rings used to draw the torus
-    float posisi_Kepala = -0.25f;
-    float batas_Kepala=-0.3f;
+    float default_position = -0.25f;
+    float limit =-0.3f;
     int count = 5;
     float direction = 0.1f;
 
@@ -899,7 +899,7 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 1.0f, 0.1f, "t"
         ));
-        mixue.get(6).scaleObject(0.02f, 0.05f, 0.3f);
+        mixue.get(6).scaleObject(0.01f, 0.01f, 0.3f);
         mixue.get(6).rotateObject((float) Math.toRadians(90f), 1f, 0f, 0f);
         mixue.get(6).translateObject(-0.79f, -0.45f, 0.0f);
 
@@ -1025,12 +1025,12 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "r"
         ));
-        mixue.get(1).getChildObject().get(6).scaleObject(0.2f, 0.2f, 0.3f);
+        mixue.get(1).getChildObject().get(6).scaleObject(0.1f, 0.1f, 0.1f);
         mixue.get(1).getChildObject().get(6).rotateObject((float) Math.toRadians(90f), 1f, 0f, 0f);
-        mixue.get(1).getChildObject().get(6).translateObject(-0.5f, -0.125f, 0.0f);
+        mixue.get(1).getChildObject().get(6).translateObject(-0.5f, -0.09f, 0.0f);
 
-
-        mixue.add(new Sphere(
+        //mahkota
+        mixue.get(1).getChildObject().add(new Sphere(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1047,12 +1047,13 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "p"
         ));
-        mixue.get(7).scaleObject(0.3f, 1.0f, 1.0f);
-        mixue.get(7).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
-        mixue.get(7).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(7).translateObject(-0.5f, -0.12f, 0.1f);
+        mixue.get(1).getChildObject().get(7).scaleObject(0.1f, 1.0f, 1.0f);
+        mixue.get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(25f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(7).translateObject(-0.465f, -0.125f, 0.0f);
 
-        mixue.add(new Sphere(
+        mixue.get(1).getChildObject().add(new Sphere(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1069,11 +1070,183 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "p"
         ));
-        mixue.get(8).scaleObject(0.3f, 1.0f, 1.0f);
-        mixue.get(8).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
-        mixue.get(8).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(8).translateObject(-0.40f, -0.12f, 0.0f);
-        mixue.get(8).rotateObject((float) Math.toRadians(-30f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(8).scaleObject(0.1f, 1.0f, 1.0f);
+        mixue.get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(-25f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(8).translateObject(-0.535f, -0.125f, 0.0f);
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(1).getChildObject().get(9).scaleObject(0.3f, 1.0f, 1.0f);
+        mixue.get(1).getChildObject().get(9).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(9).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(1).getChildObject().get(9).translateObject(-0.5f, -0.125f, 0.2f);
+
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(1).getChildObject().get(10).scaleObject(0.1f, 1.0f, 1.0f);
+        mixue.get(1).getChildObject().get(10).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(10).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(1).getChildObject().get(10).rotateObject((float) Math.toRadians(115f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(10).translateObject(-0.43f, -0.125f, 0.0f);
+
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(1).getChildObject().get(11).scaleObject(0.1f, 1.0f, 1.0f);
+        mixue.get(1).getChildObject().get(11).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(11).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(1).getChildObject().get(11).rotateObject((float) Math.toRadians(75f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(11).translateObject(-0.575f, -0.125f, 0.0f);
+
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(1).getChildObject().get(12).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(1).getChildObject().get(12).rotateObject((float) Math.toRadians(25f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(12).translateObject(-0.465f, -0.05f, 0.0f);
+
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(1).getChildObject().get(13).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(1).getChildObject().get(13).rotateObject((float) Math.toRadians(-25f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(13).translateObject(-0.535f, -0.05f, 0.0f);
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(1).getChildObject().get(14).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(1).getChildObject().get(14).translateObject(-0.5f, -0.05f, 0.1f);
+
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(1).getChildObject().get(15).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(1).getChildObject().get(15).rotateObject((float) Math.toRadians(115f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(15).translateObject(-0.43f, -0.05f, 0.0f);
+
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(1).getChildObject().get(16).scaleObject(0.03f, 0.03f, 0.03f);
+
+        mixue.get(1).getChildObject().get(16).rotateObject((float) Math.toRadians(75f), 0.0f, 1f, 0f);
+        mixue.get(1).getChildObject().get(16).translateObject(-0.575f, -0.05f, 0.0f);
+
 
 
 //        mixue.get(7).translateObject(-0f, -0f, 0.0f);
@@ -1106,35 +1279,35 @@ public class Main {
 //            eskrim.get(0).rotateObject((float) Math.toRadians(0.1f), 1.0f, 0.0f, 0.0f);
             //eskrim.get(0).translateObject((float) Math.toRadians(0.1f), 0.0f, 0.0f);
             // TOKO + AWAN
-          //  toko.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(4).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(5).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(6).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(7).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(8).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(9).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(10).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(11).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(12).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(13).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(14).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(15).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(16).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  toko.get(0).getChildObject().get(17).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  awan.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  awan.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  awan.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-          //  awan.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(4).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(5).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(6).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(7).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(8).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(9).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(10).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(11).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(12).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(13).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(14).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(15).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(16).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  toko.get(0).getChildObject().get(17).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  awan.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  awan.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  awan.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            //  awan.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
             toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
             // TOKO + AWAN
 
-            if (posisi_Kepala > batas_Kepala) {
-                posisi_Kepala-= 0.005f;
-                System.out.println(posisi_Kepala);
+            if (default_position > limit) {
+                default_position -= 0.005f;
+                System.out.println(default_position);
                 for(int i = 0 ; i <= 4; i++){
                     Vector3f tempCenterPoint = mixue.get(1).updateCenterPoint();
                     mixue.get(1).translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
@@ -1147,7 +1320,7 @@ public class Main {
 //                mixue.get(1).getChildObject().get(0).rotateObject((float) Math.toRadians(0.1f), 0f, 0f, 1f);
             }else{
                 direction = -(direction);
-                posisi_Kepala = -0.2f;
+                default_position = -0.2f;
             }
             // es krim muter
             for (Object child: eskrim.get(0).getChildObject()){
@@ -1158,12 +1331,26 @@ public class Main {
             }
         }
         if (window.isKeyPressed(GLFW_KEY_D)){
-            mixue.get(7).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
+            mixue.get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
+            mixue.get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
+
         }
 
         // es krim gerak (L kanan, J kiri)
         if (window.isKeyPressed(GLFW_KEY_L)) {
-            eskrim.get(0).translateObject((float) Math.toRadians(0.1f), 0.0f, 0.0f);
+
+            if (default_position > limit *3) {
+                default_position -= 0.005f;
+                eskrim.get(0).translateObject((float) Math.toRadians(-direction), 0.0f, 0.0f);
+                for (Object object : mixue) {
+                    object.translateObject((float) Math.toRadians(direction), 0.0f, 0.0f);
+//                    object.rotateObject((float) Math.toRadians(direction), 1f, 0f, 0f);
+                }
+            }else{
+                direction = -(direction);
+                default_position = -0.2f;
+            }
+//
         }
         if (window.isKeyPressed(GLFW_KEY_J)) {
             eskrim.get(0).translateObject((float) Math.toRadians(0.1f) * -1, 0.0f, 0.0f);
