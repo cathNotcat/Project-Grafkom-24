@@ -179,9 +179,17 @@ public class Object extends ShaderProgram{
     public void rotateObject(Float degree, Float offsetX, Float offsetY, Float offsetZ){
         // jaga" kalo alamatnya sama jadinya pake new
         model = new Matrix4f().rotate(degree, offsetX, offsetY, offsetZ).mul(new Matrix4f(model));
-        for (Object child: childObject){
-            child.rotateObject(degree, offsetX, offsetY, offsetZ);
-        }
+       for (Object child: childObject){
+           child.rotateObject(degree, offsetX, offsetY, offsetZ);
+       }
+
+    }
+
+    public void rotateObject2(Float degree, Float offsetX, Float offsetY, Float offsetZ){
+        // jaga" kalo alamatnya sama jadinya pake new
+        model = new Matrix4f().rotate(degree, offsetX, offsetY, offsetZ).mul(new Matrix4f(model));
+
+
     }
     public void scaleObject(Float offsetX, Float offsetY, Float offsetZ){
         // jaga" kalo alamatnya sama jadinya pake new

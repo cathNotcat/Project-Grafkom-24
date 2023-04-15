@@ -4,6 +4,7 @@ import org.joml.Vector3f;
 import org.joml.Vector4f;
 import org.lwjgl.opengl.GL;
 
+import java.awt.image.CropImageFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,9 @@ public class Main {
 
     ArrayList<Object> objects = new ArrayList<>();
     ArrayList<Object> mixue = new ArrayList<>();
+
+    ArrayList<Circle> toko = new ArrayList<>();
+    ArrayList<Circle> awan = new ArrayList<>();
 
 
     float innerRadius = 0.5f; // inner radius of the torus
@@ -43,6 +47,543 @@ public class Main {
         GL.createCapabilities();
         camera.setPosition(-0.5f,0,1f);
         camera.setRotation((float) Math.toRadians(0.0f), (float)Math.toRadians(30.0f));
+
+        // START TOKO + AWAN
+
+        // Kotak tengah putih
+        toko.add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).scaleObject(10.0f, 5.0f, 3.0f);
+        toko.get(0).translateObject(0.0f, 0.0f, 0.0f);
+
+
+        // Kotak Merah Atas
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.0f, 0.0f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(0).translateObject(0.0f, 0.1255f, 0.0f);
+        toko.get(0).getChildObject().get(0).scaleObject(12.0f, 3.0f, 3.0f);
+        toko.get(0).getChildObject().get(0).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+        // Kotak merah bawah
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.0f, 0.0f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(1).translateObject(0.0f, -0.35f, 0.0f);
+        toko.get(0).getChildObject().get(1).scaleObject(12.0f, 0.7f, 3.0f);
+        toko.get(0).getChildObject().get(1).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+        // Belakang Pintu Kanan
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0f, 0f, 0f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(2).translateObject(0.05f, -0.035f, 0.0f);
+        toko.get(0).getChildObject().get(2).scaleObject(1.0f, 2.5f, 0.0f);
+
+        // Pintu Depan Kanan
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.7f, 0.7f, 0.7f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(3).translateObject(0.05f, -0.035f, 0.0f);
+        toko.get(0).getChildObject().get(3).scaleObject(1.0f, 2.5f, 0.0f);
+
+        // Pintu Kiri
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.7f, 0.7f, 0.7f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(4).scaleObject(1.0f, 2.5f, 0.0f);
+        toko.get(0).getChildObject().get(4).translateObject(-0.05f, -0.087f, 0.0f);
+
+//      // M kiri |
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(5).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(5).translateObject(-0.37f, 0.37f, 0.0f);
+
+        // M \ kiri
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+
+        toko.get(0).getChildObject().get(6).scaleObject(0.3f, 1.1f, 0.3f);
+        toko.get(0).getChildObject().get(6).translateObject(-0.14f, 0.505f, 0.0f);
+        toko.get(0).getChildObject().get(6).rotateObject((float) Math.toRadians(25f), 0.0f, 0.0f, 1f);
+
+
+        // M / kanan
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+
+        toko.get(0).getChildObject().get(7).scaleObject(0.3f, 1.1f, 0.3f);
+        toko.get(0).getChildObject().get(7).translateObject(-0.43f, 0.24f, 0.0f);
+        toko.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(-25f), 0.0f, 0.0f, 1f);
+
+
+        // M | kanan
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(8).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(8).translateObject(-0.26f, 0.37f, 0.0f);
+
+        // I
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(9).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(9).translateObject(-0.17f, 0.37f, 0.0f);
+
+        // X kiri \
+
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(10).scaleObject(0.3f, 2.0f, 0.3f);
+        toko.get(0).getChildObject().get(10).translateObject(0.23f, 0.29f, 0.0f);
+        toko.get(0).getChildObject().get(10).rotateObject((float) Math.toRadians(40f), 0.0f, 0.0f, 1f);
+
+        // X / Kanan
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(11).scaleObject(0.3f, 2.0f, 0.3f);
+        toko.get(0).getChildObject().get(11).translateObject(-0.245f, 0.27f, 0.0f);
+        toko.get(0).getChildObject().get(11).rotateObject((float) Math.toRadians(-40f), 0.0f, 0.0f, 1f);
+
+        // U | kiri
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(12).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(12).translateObject(0.13f, 0.37f, 0.0f);
+
+        // U _ tengah
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(13).scaleObject(0.3f, 0.7f, 0.3f);
+        toko.get(0).getChildObject().get(13).translateObject(0.3f, -0.18f, 0.0f);
+        toko.get(0).getChildObject().get(13).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+
+        // U | kanan
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(14).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(14).translateObject(0.22f, 0.37f, 0.0f);
+
+        // E
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(15).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(15).translateObject(0.3f, 0.37f, 0.0f);
+
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(16).scaleObject(0.3f, 0.8f, 0.3f);
+        toko.get(0).getChildObject().get(16).translateObject(0.44f, -0.34f, 0.0f);
+        toko.get(0).getChildObject().get(16).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(17).scaleObject(0.3f, 0.8f, 0.3f);
+        toko.get(0).getChildObject().get(17).translateObject(0.30f, -0.34f, 0.0f);
+        toko.get(0).getChildObject().get(17).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+
+        toko.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(18).scaleObject(0.3f, 0.8f, 0.3f);
+        toko.get(0).getChildObject().get(18).translateObject(0.37f, -0.34f, 0.0f);
+        toko.get(0).getChildObject().get(18).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+
+
+        // AWAN
+        // elipseoid
+        awan.add(new Sphere(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(0).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(0).translateObject(-0.7f, 0.7f, 0.0f);
+        awan.get(0).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+        awan.get(0).getChildObject().add(new Sphere(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(0).getChildObject().get(0).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(0).getChildObject().get(0).translateObject(-0.6f, 0.75f, 0.0f);
+        awan.get(0).getChildObject().get(0).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+
+        awan.get(0).getChildObject().add(new Sphere(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(0).getChildObject().get(1).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(0).getChildObject().get(1).translateObject(-0.6f, 0.7f, 0.0f);
+
+        awan.get(0).getChildObject().add(new Sphere(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(0).getChildObject().get(2).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(0).getChildObject().get(2).translateObject(-0.5f, 0.7f, 0.0f);
+
+        // END TOKO + AWAN
 
         //cone
         objects.add(new Sphere(
@@ -492,6 +1033,34 @@ public class Main {
 
         if (window.isKeyPressed(GLFW_KEY_W)){
 //            objects.get(0).rotateObject((float) Math.toRadians(0.1f), 1.0f, 0.0f, 0.0f);
+            //objects.get(0).translateObject((float) Math.toRadians(0.1f), 0.0f, 0.0f);
+            // TOKO + AWAN
+          //  toko.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(4).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(5).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(6).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(7).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(8).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(9).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(10).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(11).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(12).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(13).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(14).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(15).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(16).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  toko.get(0).getChildObject().get(17).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  awan.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  awan.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  awan.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+          //  awan.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+            // TOKO + AWAN
+
             objects.get(0).translateObject((float) Math.toRadians(0.1f), 0.0f, 0.0f);
 
             if (posisi_Kepala > batas_Kepala) {
@@ -561,6 +1130,13 @@ public class Main {
             glClearColor(0,0,0,0);
             GL.createCapabilities();
             input();
+
+            for(Object object:toko){
+                object.draw();
+            }
+            for(Object object:awan){
+                object.draw();
+            }
 
             for(Object object:objects){
                 object.draw();
