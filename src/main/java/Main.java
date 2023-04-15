@@ -22,6 +22,8 @@ public class Main {
 
     ArrayList<Circle> toko = new ArrayList<>();
     ArrayList<Circle> awan = new ArrayList<>();
+    ArrayList<Object> kurva = new ArrayList<>();
+
 
 
     float innerRadius = 0.5f; // inner radius of the torus
@@ -1247,7 +1249,47 @@ public class Main {
         mixue.get(1).getChildObject().get(16).rotateObject((float) Math.toRadians(75f), 0.0f, 1f, 0f);
         mixue.get(1).getChildObject().get(16).translateObject(-0.575f, -0.05f, 0.0f);
 
+        //kurva
+        mixue.get(1).getChildObject().add(new Curve(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.2f, 0.2f, 0),
+                                new Vector3f(0f, 0f, 0),
+                                new Vector3f(0.2f, 0.2f, 0.f)
+                        )
+                ),
+                new Vector4f(0f, 0f, 0f, 1f)
 
+        ));
+        mixue.get(1).getChildObject().get(17).scaleObject(0.25f, 0.25f, 0f);
+
+        mixue.get(1).getChildObject().get(17).translateObject(-0.5f, -0.375f, 0.0f);
+
+        //kurva
+        mixue.get(1).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.2f, 0.2f, 0),
+                                new Vector3f(0f, 0f, 0),
+                                new Vector3f(0.2f, 0.2f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 0f, 0f, 1f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(1).getChildObject().get(18).scaleObject(0.04f, 0.03f, 0f);
+        mixue.get(1).getChildObject().get(18).rotateObject((float) Math.toRadians(-25f), 0.0f, 0f, 1f);
+
+        mixue.get(1).getChildObject().get(18).translateObject(-0.55f, -0.328f, 0.0f);
 
 //        mixue.get(7).translateObject(-0f, -0f, 0.0f);
 //        mixue.add(new Sphere(
@@ -1390,6 +1432,10 @@ public class Main {
             for(Object object:mixue){
                 object.draw();
             }
+            for(Object object:kurva){
+                object.draw();
+            }
+
 //            mixue.get(1).getChildObject().get(6).drawLine();
             glDisableVertexAttribArray(0);
             glfwPollEvents();
