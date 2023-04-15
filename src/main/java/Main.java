@@ -650,7 +650,7 @@ public class Main {
                 "s"
         ));
         eskrim.get(0).getChildObject().get(1).scaleObject(0.27f, 0.1f, 0.25f); // 0.65 0.2 0.65
-        eskrim.get(0).getChildObject().get(1).translateObject(0.63f, -0.25f, 0.0f); // 0.0 0.3 0.0
+        eskrim.get(0).getChildObject().get(1).translateObject(0.6f, -0.25f, 0.0f); // 0.0 0.3 0.0
 
         // es atas
         eskrim.get(0).getChildObject().add(new Sphere(
@@ -672,7 +672,7 @@ public class Main {
                 "s"
         ));
         eskrim.get(0).getChildObject().get(2).scaleObject(0.22f, 0.1f, 0.2f); // 0.5 0.18 0.5
-        eskrim.get(0).getChildObject().get(2).translateObject(0.63f, -0.2f, 0.0f); // 0.0 0.44 0.0
+        eskrim.get(0).getChildObject().get(2).translateObject(0.6f, -0.2f, 0.0f); // 0.0 0.44 0.0
 
         // es atas bentuk cone
         eskrim.get(0).getChildObject().add(new Sphere(
@@ -698,7 +698,7 @@ public class Main {
         eskrim.get(0).getChildObject().get(3).rotateObject(90f,0.0f, 1f, 0.0f);
         eskrim.get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
         eskrim.get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(153f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(3).translateObject(0.63f, -0.1f, 0.0f); // 0.0 0.65 0.0
+        eskrim.get(0).getChildObject().get(3).translateObject(0.6f, -0.1f, 0.0f); // 0.0 0.65 0.0
 
         // tabung dibawah
         eskrim.get(0).getChildObject().add(new Sphere(
