@@ -44,6 +44,8 @@ public class Sphere extends Circle{
         else if ( choice == "ep") createEParaboloid();
         else if ( choice == "r") createRing();
         else if ( choice == "j") createJubah();
+        else if ( choice == "p") createPrism();
+
         setupVAOVBO();
     }
 
@@ -250,6 +252,91 @@ public class Sphere extends Circle{
 //        vertices.add(tempVertices.get(2));
 //        vertices.add(tempVertices.get(7));
 //        vertices.add(tempVertices.get(6));
+    }
+
+    public void createPrism(){
+        Vector3f temp = new Vector3f();
+        ArrayList<Vector3f> tempVertices = new ArrayList<>();
+        //TITIK 1
+        temp.x = cp.get(0) - rx / 2.0f;
+        temp.y = cp.get(1) + ry / 2.0f;
+        temp.z = cp.get(2) - rz / 2.0f;
+        tempVertices.add(temp);
+        temp = new Vector3f();
+        //TITIK 2
+        temp.x = cp.get(0) + rx / 2.0f;
+        temp.y = cp.get(1) + ry / 2.0f;
+        temp.z = cp.get(2) - rz / 2.0f;
+        tempVertices.add(temp);
+        temp = new Vector3f();
+        //TITIK 3
+        temp.x = cp.get(0) + rx / 2.0f;
+        temp.y = cp.get(1) - ry / 2.0f;
+        temp.z = cp.get(2) - rz / 2.0f;
+        tempVertices.add(temp);
+        temp = new Vector3f();
+        //TITIK 4
+        temp.x = cp.get(0) - rx / 2.0f;
+        temp.y = cp.get(1) - ry / 2.0f;
+        temp.z = cp.get(2) - rz / 2.0f;
+        tempVertices.add(temp);
+        temp = new Vector3f();
+        //TITIK 5
+        temp.x = cp.get(0) - rx / 2.0f;
+        temp.y = cp.get(1) + ry / 2.0f;
+        temp.z = cp.get(2) + rz / 2.0f;
+        tempVertices.add(temp);
+        temp = new Vector3f();
+        //TITIK 6
+        temp.x = cp.get(0) + rx / 2.0f;
+        temp.y = cp.get(1) + ry / 2.0f;
+        temp.z = cp.get(2) + rz / 2.0f;
+        tempVertices.add(temp);
+        temp = new Vector3f();
+//        //TITIK 7
+//        temp.x = cp.get(0) + rx / 2.0f;
+//        temp.y = cp.get(1) - ry / 2.0f;
+//        temp.z = cp.get(2) + rz / 2.0f;
+//        tempVertices.add(temp);
+//        temp = new Vector3f();
+//        //TITIK 8
+//        temp.x = cp.get(0) - rx / 2.0f;
+//        temp.y = cp.get(1) - ry / 2.0f;
+//        temp.z = cp.get(2) + rz / 2.0f;
+//        tempVertices.add(temp);
+//        temp = new Vector3f();
+
+        vertices.clear();
+        //kotak yg sisi belakang
+        vertices.add(tempVertices.get(0));
+        vertices.add(tempVertices.get(1));
+        vertices.add(tempVertices.get(2));
+//        vertices.add(tempVertices.get(3));
+        //kotak yg sisi depan
+        vertices.add(tempVertices.get(3));
+        vertices.add(tempVertices.get(4));
+        vertices.add(tempVertices.get(5));
+//        vertices.add(tempVertices.get(7));
+        //kotak yg sisi kiri
+        vertices.add(tempVertices.get(0));
+        vertices.add(tempVertices.get(3));
+        vertices.add(tempVertices.get(5));
+        vertices.add(tempVertices.get(2));
+        //kotak yg sisi kanan
+        vertices.add(tempVertices.get(0));
+        vertices.add(tempVertices.get(3));
+        vertices.add(tempVertices.get(4));
+        vertices.add(tempVertices.get(1));
+        //kotak yg sisi atas
+//        vertices.add(tempVertices.get(0));
+//        vertices.add(tempVertices.get(1));
+//        vertices.add(tempVertices.get(5));
+//        vertices.add(tempVertices.get(4));
+        //kotak yg sisi bawah
+        vertices.add(tempVertices.get(1));
+        vertices.add(tempVertices.get(4));
+        vertices.add(tempVertices.get(5));
+        vertices.add(tempVertices.get(2));
     }
 
     public void createCone() {
