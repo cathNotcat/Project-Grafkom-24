@@ -15,7 +15,7 @@ import static org.lwjgl.opengl.GL30.*;
 
 public class Main {
     private Window window =
-            new Window(800, 800, "Hello World");
+            new Window(800, 800, "Mixue");
 
     ArrayList<Object> eskrim = new ArrayList<>();
     ArrayList<Object> mixue = new ArrayList<>();
@@ -23,13 +23,8 @@ public class Main {
     ArrayList<Circle> toko = new ArrayList<>();
     ArrayList<Circle> awan = new ArrayList<>();
     ArrayList<Object> kurva = new ArrayList<>();
+    ArrayList<Object> bg = new ArrayList<>();
 
-
-
-    float innerRadius = 0.5f; // inner radius of the torus
-    float outerRadius = 1.0f; // outer radius of the torus
-    int sides = 32; // number of sides used to draw the torus
-    int rings = 16; // number of rings used to draw the torus
     float default_position = -0.25f;
     float limit =-0.3f;
     int count = 5;
@@ -44,9 +39,71 @@ public class Main {
     public void init() {
         window.init();
         GL.createCapabilities();
+//        glEnable(GL_DEPTH_TEST);
+//        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+//        glDepthMask(true);
+//        glDepthFunc(GL_LEQUAL);
+//        glDepthRange(0.0f, 1.0f);
+
         camera.setPosition(-0.5f,0,1f);
         camera.setRotation((float) Math.toRadians(0.0f), (float)Math.toRadians(30.0f));
 
+        // langit
+        bg.add(new Rectangle(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-1.0f, 1.0f, 0),
+                                new Vector3f(-1.0f, -1.0f, 0),
+                                new Vector3f(1.0f, 1.0f, 0),
+                                new Vector3f(1.0f, -1.0f, 0f)
+                        )
+                ),
+                new Vector4f(0.2f, 0.5f, 0.7f, 1f),
+                Arrays.asList(0,1,2,3,1)
+
+        ));
+
+        // grass
+        bg.add(new Rectangle(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-1.0f, -0.2f, 0),
+                                new Vector3f(-1.0f, -1.0f, 0),
+                                new Vector3f(1.0f, -1.0f, 0),
+                                new Vector3f(1.0f, -0.2f, 0.f)
+                        )
+                ),
+                new Vector4f(0.0f, 0.7f, 0.0f, 1f),
+                Arrays.asList(0,1,2,3,1)
+
+        ));
+
+        // jalan
+        bg.add(new Rectangle(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.1f, 0.0f, 0),
+                                new Vector3f(-0.5f, -1.0f, 0),
+                                new Vector3f(0.5f, -1.0f, 0),
+                                new Vector3f(0.1f, 0.0f, 0f)
+                        )
+                ),
+                new Vector4f(0.3f, 0.3f, 0.3f, 1f),
+                Arrays.asList(0,1,2,3,1)
+
+        ));
         // START TOKO + AWAN
 
         // Kotak tengah putih
@@ -582,10 +639,11 @@ public class Main {
         awan.get(0).getChildObject().get(2).scaleObject(0.9f, 0.9f, 1.2f);
         awan.get(0).getChildObject().get(2).translateObject(-0.5f, 0.7f, 0.0f);
 
+
         // END TOKO + AWAN
 
         // START ES KRIM
-        //cone
+        //gelas
         eskrim.add(new Sphere(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
@@ -599,16 +657,16 @@ public class Main {
                                 new Vector3f(0.5f, 0.5f, 0.f)
                         )
                 ),
-                new Vector4f(1f, 0.8f, 0.0f, 1),
+                new Vector4f(1f, 0.0f, 0.0f, 1),
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f,
-                "c"
+                "foc"
         ));
-        eskrim.get(0).scaleObject(0.2f, 0.2f, 0.3f); // 0.5, 0.5, 0.8
+        eskrim.get(0).scaleObject(0.19f, 0.2f, 0.2f); // 0.5, 0.5, 0.8
         eskrim.get(0).rotateObject(90f,0.0f, 1f, 0.0f);
         eskrim.get(0).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
         eskrim.get(0).rotateObject((float) Math.toRadians(333f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).translateObject(0.6f, -0.55f, 0.0f); //0.0, -0.5, 0.0
+        eskrim.get(0).translateObject(0.6f, -0.3f, 0.0f); //0.0, -0.5, 0.0
 
         // es bawah
         eskrim.get(0).getChildObject().add(new Sphere(
@@ -629,7 +687,7 @@ public class Main {
                 0.1f, 0.1f, 0.1f,
                 "s"
         ));
-        eskrim.get(0).getChildObject().get(0).scaleObject(0.33f, 0.1f, 0.3f);
+        eskrim.get(0).getChildObject().get(0).scaleObject(0.32f, 0.1f, 0.3f);
         eskrim.get(0).getChildObject().get(0).translateObject(0.6f, -0.3f, 0.0f);
 
         // es tengah
@@ -703,26 +761,26 @@ public class Main {
         eskrim.get(0).getChildObject().get(3).translateObject(0.6f, -0.1f, 0.0f); // 0.0 0.65 0.0
 
         // tabung dibawah
-        eskrim.get(0).getChildObject().add(new Sphere(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 0.0f, 0.0f, 1f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 1.0f, 0.1f, "t"
-        ));
-        eskrim.get(0).getChildObject().get(4).scaleObject(0.3f, 0.3f, 0.1f);
-        eskrim.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(90f), 1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.6f, 0.0f);
+//        eskrim.get(0).getChildObject().add(new Sphere(
+//                Arrays.asList(
+//                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+//                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+//                ),
+//                new ArrayList<>(
+//                        List.of(
+//                                new Vector3f(-0.5f, 0.5f, 0),
+//                                new Vector3f(-0.5f, -0.5f, 0),
+//                                new Vector3f(0.5f, -0.5f, 0),
+//                                new Vector3f(0.5f, 0.5f, 0.f)
+//                        )
+//                ),
+//                new Vector4f(1.0f, 0.0f, 0.0f, 1f),
+//                new Vector3f(0.0f, 0.0f, 0.0f),
+//                0.1f, 1.0f, 0.1f, "t"
+//        ));
+//        eskrim.get(0).getChildObject().get(4).scaleObject(0.3f, 0.3f, 0.1f);
+//        eskrim.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(90f), 1.0f, 0.0f, 0.0f);
+//        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.6f, 0.0f);
 
 
 
@@ -904,6 +962,124 @@ public class Main {
         mixue.get(6).scaleObject(0.01f, 0.01f, 0.3f);
         mixue.get(6).rotateObject((float) Math.toRadians(90f), 1f, 0f, 0f);
         mixue.get(6).translateObject(-0.79f, -0.45f, 0.0f);
+
+        // es krim snow king
+        //cone
+        mixue.add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 0.8f, 0.0f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f,
+                "c"
+        ));
+        mixue.get(7).scaleObject(0.05f, 0.05f, 0.1f); // 0.5, 0.5, 0.8
+        mixue.get(7).rotateObject(90f,0.0f, 1f, 0.0f);
+        mixue.get(7).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
+        mixue.get(7).rotateObject((float) Math.toRadians(333f),1.0f, 0.0f, 0.0f);
+        mixue.get(7).translateObject(-0.79f, -0.25f, 0.0f); //0.0, -0.5, 0.0
+
+        // es bawah
+        mixue.get(7).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f,
+                "s"
+        ));
+        mixue.get(7).getChildObject().get(0).scaleObject(0.08f, 0.03f, 0.08f);
+        mixue.get(7).getChildObject().get(0).translateObject(-0.79f, -0.18f, 0.0f);
+
+        // es tengah
+        mixue.get(7).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f,
+                "s"
+        ));
+        mixue.get(7).getChildObject().get(1).scaleObject(0.06f, 0.03f, 0.06f); // 0.65 0.2 0.65
+        mixue.get(7).getChildObject().get(1).translateObject(-0.79f, -0.165f, 0.0f); // 0.0 0.3 0.0
+
+        // es atas
+        mixue.get(7).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f,
+                "s"
+        ));
+        mixue.get(7).getChildObject().get(2).scaleObject(0.04f, 0.03f, 0.04f); // 0.5 0.18 0.5
+        mixue.get(7).getChildObject().get(2).translateObject(-0.79f, -0.155f, 0.0f); // 0.0 0.44 0.0
+
+        // es atas bentuk cone
+        mixue.get(7).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 1f, 1f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f,
+                "c"
+        ));
+
+        mixue.get(7).getChildObject().get(3).scaleObject(0.015f, 0.015f, 0.015f); // 0.2 0.2 0.2
+        mixue.get(7).getChildObject().get(3).rotateObject(90f,0.0f, 1f, 0.0f);
+        mixue.get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
+        mixue.get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(153f),1.0f, 0.0f, 0.0f);
+        mixue.get(7).getChildObject().get(3).translateObject(-0.79f, -0.132f, 0.0f); // 0.0 0.65 0.0
 
         //mata
         mixue.get(1).getChildObject().add(new Sphere(
@@ -1364,6 +1540,11 @@ public class Main {
                 direction = -(direction);
                 default_position = -0.2f;
             }
+
+            Vector3f tempCenterPointParent = eskrim.get(0).updateCenterPoint();
+            eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
+            eskrim.get(0).rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
+            eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
             // es krim muter
             for (Object child: eskrim.get(0).getChildObject()){
                 Vector3f tempCenterPoint = child.updateCenterPoint();
@@ -1415,10 +1596,13 @@ public class Main {
 //        kalo ga pake loop nnti habis buka window baru langsung ketutup (ga bisa tambahin frame)
         while(window.isOpen()){
             window.update();
-            glClearColor(0,0,0,0);
+            glClearColor(0.3f,0.3f,0.3f,0);
             GL.createCapabilities();
             input();
 
+            for(Object object:bg){
+                object.draw();
+            }
             for(Object object:toko){
                 object.draw();
             }

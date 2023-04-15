@@ -17,6 +17,8 @@ public class Sphere extends Circle{
     int sides = 32; // number of sides used to draw the torus
     int rings = 16; // number of rings used to draw the torus
 
+    // Frustum of a cone
+
 
 
     Float rz;
@@ -24,6 +26,8 @@ public class Sphere extends Circle{
     int ibo;
     int stackCount = 200, sectorCount = 300;
     String choice ;
+
+    float r1 = 0.63f, r2 = 0.35f, h = 2.0f;
 
     public Sphere(List<ShaderModuleData> shaderModuleDataList, List<Vector3f> vertices, Vector4f color, Vector3f cp, Float rx, Float ry, Float rz, String choice) {
         super(shaderModuleDataList, vertices, color, cp, rx, ry);
@@ -45,6 +49,7 @@ public class Sphere extends Circle{
         else if ( choice == "r") createRing();
         else if ( choice == "j") createJubah();
         else if ( choice == "p") createPrism();
+        else if ( choice == "foc") createFrustumOfCone(r1, r2, h);
 
         setupVAOVBO();
     }
@@ -348,6 +353,20 @@ public class Sphere extends Circle{
                 float x = 0.5f * (float) (v * Math.cos(u));
                 float y = 0.5f * (float) (v * Math.sin(u));
                 float z = 0.5f * (float) (v);
+                temp.add(new Vector3f(x, y, z));
+            }
+        }
+        this.vertices = temp;
+    }
+
+    public void createFrustumOfCone(float r1, float r2, float h) {
+        this.vertices.clear();
+        ArrayList<Vector3f> temp = new ArrayList();
+        for (double v = 0; v <= Math.PI; v += Math.PI / 360) {
+            for (double u = 0; u <= Math.PI * 2; u += Math.PI / 360) {
+                float x = (float) ((r1 - r2) / h * v * Math.cos(u) + r2 * Math.cos(u));
+                float y = (float) ((r1 - r2) / h * v * Math.sin(u) + r2 * Math.sin(u));
+                float z = (float) (h - (h * v / Math.PI));
                 temp.add(new Vector3f(x, y, z));
             }
         }

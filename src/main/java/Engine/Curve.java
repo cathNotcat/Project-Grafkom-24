@@ -20,8 +20,7 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class Curve extends Object{
     private ArrayList<Vector3f> v = new ArrayList<>();
-    private ArrayList<Vector3f> curveVertices
-            = new ArrayList<>();
+    private ArrayList<Vector3f> curveVertices = new ArrayList<>();
     public Curve(List<ShaderModuleData> shaderModuleDataList, List<Vector3f> vertices, Vector4f color) {
         super(shaderModuleDataList, vertices, color);
         this.vertices = vertices;
