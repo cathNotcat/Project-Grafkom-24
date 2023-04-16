@@ -868,7 +868,7 @@ public class Main {
                 new Vector4f(0.0f, 0.0f, 0.0f, 1f)
 
         ));
-        eskrim.get(0).getChildObject().get(5).scaleObject(0.25f, 0.25f, 0.0f);
+        eskrim.get(0).getChildObject().get(5).scaleObject(0.23f, 0.25f, 0.0f);
         eskrim.get(0).getChildObject().get(5).translateObject(0.6f, -0.58f, 0.12f);
 
         // mata
@@ -1720,38 +1720,22 @@ public class Main {
     }
 
     public void input() {
-
+        if (window.isKeyPressed(GLFW_KEY_E)) {
+            for (Object toko: toko){
+                toko.rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            }
+            for (Object toko: toko.get(0).getChildObject()){
+                toko.rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            }
+        }
         if (window.isKeyPressed(GLFW_KEY_W)){
 //            eskrim.get(0).rotateObject((float) Math.toRadians(0.1f), 1.0f, 0.0f, 0.0f);
             //eskrim.get(0).translateObject((float) Math.toRadians(0.1f), 0.0f, 0.0f);
             // TOKO + AWAN
-            //    toko.get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(1).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(2).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(4).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(5).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(6).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(7).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(8).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(9).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(10).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(11).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(12).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(13).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(14).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(15).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(16).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(17).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            //    toko.get(0).getChildObject().get(18).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
             awan.get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            awan.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            awan.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            awan.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            for (Object awan: awan.get(0).getChildObject()){
+                awan.rotateObject((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            }
             toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
             // TOKO + AWAN
 
