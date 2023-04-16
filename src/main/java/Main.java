@@ -133,7 +133,7 @@ public class Main {
         ));
 
         toko.get(0).scaleObject(10.0f, 5.0f, 3.0f);
-        toko.get(0).translateObject(0.0f, 0.0f, 0.0f);
+        toko.get(0).translateObject(0.0f, 0.0f, 1.0f);
 
 
         // Kotak Merah Atas
@@ -151,13 +151,13 @@ public class Main {
                         )
                 ),
                 new Vector4f(0.8f, 0.0f, 0.0f, 1),
-                new Vector3f(0.0f, 0.0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.3f),
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
         toko.get(0).getChildObject().get(0).translateObject(0.0f, 0.1255f, 0.0f);
         toko.get(0).getChildObject().get(0).scaleObject(12.0f, 3.0f, 3.0f);
-        toko.get(0).getChildObject().get(0).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+        toko.get(0).getChildObject().get(0).rotateObject(0.0f, 0.0f, 0.0f, 0.3f);
 
 
         // Kotak merah bawah
@@ -179,76 +179,11 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(1).translateObject(0.0f, -0.35f, 0.0f);
+        toko.get(0).getChildObject().get(1).translateObject(0.0f, -0.35f, 0.3f);
         toko.get(0).getChildObject().get(1).scaleObject(12.0f, 0.7f, 3.0f);
         toko.get(0).getChildObject().get(1).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
 
 
-        // Belakang Pintu Kanan
-        toko.get(0).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.0f, 0.0f, 0),
-                                new Vector3f(-0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, 0.0f, 0.f)
-                        )
-                ),
-                new Vector4f(0f, 0f, 0f, 1),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "b"
-        ));
-
-        toko.get(0).getChildObject().get(2).translateObject(0.05f, -0.035f, 0.0f);
-        toko.get(0).getChildObject().get(2).scaleObject(1.0f, 2.5f, 0.0f);
-
-        // Pintu Depan Kanan
-        toko.get(0).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.0f, 0.0f, 0),
-                                new Vector3f(-0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, 0.0f, 0.f)
-                        )
-                ),
-                new Vector4f(0.7f, 0.7f, 0.7f, 1),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "b"
-        ));
-
-        toko.get(0).getChildObject().get(3).translateObject(0.05f, -0.035f, 0.0f);
-        toko.get(0).getChildObject().get(3).scaleObject(1.0f, 2.5f, 0.0f);
-
-        // Pintu Kiri
-        toko.get(0).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.0f, 0.0f, 0),
-                                new Vector3f(-0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, 0.0f, 0.f)
-                        )
-                ),
-                new Vector4f(0.7f, 0.7f, 0.7f, 1),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "b"
-        ));
-
-        toko.get(0).getChildObject().get(4).scaleObject(1.0f, 2.5f, 0.0f);
-        toko.get(0).getChildObject().get(4).translateObject(-0.05f, -0.087f, 0.0f);
 
 //      // M kiri |
         toko.get(0).getChildObject().add(new Quadric(
@@ -269,8 +204,8 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(5).scaleObject(0.3f, 1.7f, 0.3f);
-        toko.get(0).getChildObject().get(5).translateObject(-0.37f, 0.37f, 0.0f);
+        toko.get(0).getChildObject().get(2).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(2).translateObject(-0.37f, 0.37f, 0.73f);
 
         // M \ kiri
         toko.get(0).getChildObject().add(new Quadric(
@@ -292,9 +227,9 @@ public class Main {
         ));
 
 
-        toko.get(0).getChildObject().get(6).scaleObject(0.3f, 1.1f, 0.3f);
-        toko.get(0).getChildObject().get(6).translateObject(-0.14f, 0.505f, 0.0f);
-        toko.get(0).getChildObject().get(6).rotateObject((float) Math.toRadians(25f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(3).scaleObject(0.3f, 1.1f, 0.3f);
+        toko.get(0).getChildObject().get(3).translateObject(-0.14f, 0.505f, 0.73f);
+        toko.get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(25f), 0.0f, 0.0f, 1f);
 
 
         // M / kanan
@@ -317,9 +252,9 @@ public class Main {
         ));
 
 
-        toko.get(0).getChildObject().get(7).scaleObject(0.3f, 1.1f, 0.3f);
-        toko.get(0).getChildObject().get(7).translateObject(-0.43f, 0.24f, 0.0f);
-        toko.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(-25f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(4).scaleObject(0.3f, 1.1f, 0.3f);
+        toko.get(0).getChildObject().get(4).translateObject(-0.43f, 0.24f, 0.73f);
+        toko.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(-25f), 0.0f, 0.0f, 1f);
 
 
         // M | kanan
@@ -341,8 +276,8 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(8).scaleObject(0.3f, 1.7f, 0.3f);
-        toko.get(0).getChildObject().get(8).translateObject(-0.26f, 0.37f, 0.0f);
+        toko.get(0).getChildObject().get(5).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(5).translateObject(-0.26f, 0.37f, 0.73f);
 
         // I
         toko.get(0).getChildObject().add(new Quadric(
@@ -363,8 +298,8 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(9).scaleObject(0.3f, 1.7f, 0.3f);
-        toko.get(0).getChildObject().get(9).translateObject(-0.17f, 0.37f, 0.0f);
+        toko.get(0).getChildObject().get(6).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(6).translateObject(-0.17f, 0.37f, 0.73f);
 
         // X kiri \
 
@@ -386,9 +321,9 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(10).scaleObject(0.3f, 2.0f, 0.3f);
-        toko.get(0).getChildObject().get(10).translateObject(0.23f, 0.29f, 0.0f);
-        toko.get(0).getChildObject().get(10).rotateObject((float) Math.toRadians(40f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(7).scaleObject(0.3f, 2.0f, 0.3f);
+        toko.get(0).getChildObject().get(7).translateObject(0.23f, 0.29f, 0.73f);
+        toko.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(40f), 0.0f, 0.0f, 1f);
 
         // X / Kanan
         toko.get(0).getChildObject().add(new Quadric(
@@ -409,9 +344,9 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(11).scaleObject(0.3f, 2.0f, 0.3f);
-        toko.get(0).getChildObject().get(11).translateObject(-0.245f, 0.27f, 0.0f);
-        toko.get(0).getChildObject().get(11).rotateObject((float) Math.toRadians(-40f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(8).scaleObject(0.3f, 2.0f, 0.3f);
+        toko.get(0).getChildObject().get(8).translateObject(-0.245f, 0.27f, 0.73f);
+        toko.get(0).getChildObject().get(8).rotateObject((float) Math.toRadians(-40f), 0.0f, 0.0f, 1f);
 
         // U | kiri
         toko.get(0).getChildObject().add(new Quadric(
@@ -432,8 +367,8 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(12).scaleObject(0.3f, 1.7f, 0.3f);
-        toko.get(0).getChildObject().get(12).translateObject(0.13f, 0.37f, 0.0f);
+        toko.get(0).getChildObject().get(9).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(9).translateObject(0.13f, 0.37f, 0.73f);
 
         // U _ tengah
         toko.get(0).getChildObject().add(new Quadric(
@@ -454,9 +389,9 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(13).scaleObject(0.3f, 0.7f, 0.3f);
-        toko.get(0).getChildObject().get(13).translateObject(0.3f, -0.18f, 0.0f);
-        toko.get(0).getChildObject().get(13).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(10).scaleObject(0.3f, 0.7f, 0.3f);
+        toko.get(0).getChildObject().get(10).translateObject(0.3f, -0.18f, 0.73f);
+        toko.get(0).getChildObject().get(10).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
 
         // U | kanan
         toko.get(0).getChildObject().add(new Quadric(
@@ -477,8 +412,8 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(14).scaleObject(0.3f, 1.7f, 0.3f);
-        toko.get(0).getChildObject().get(14).translateObject(0.22f, 0.37f, 0.0f);
+        toko.get(0).getChildObject().get(11).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(11).translateObject(0.22f, 0.37f, 0.73f);
 
         // E
         toko.get(0).getChildObject().add(new Quadric(
@@ -499,8 +434,8 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(15).scaleObject(0.3f, 1.7f, 0.3f);
-        toko.get(0).getChildObject().get(15).translateObject(0.3f, 0.37f, 0.0f);
+        toko.get(0).getChildObject().get(12).scaleObject(0.3f, 1.7f, 0.3f);
+        toko.get(0).getChildObject().get(12).translateObject(0.3f, 0.37f, 0.73f);
 
         toko.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
@@ -520,9 +455,9 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(16).scaleObject(0.3f, 0.8f, 0.3f);
-        toko.get(0).getChildObject().get(16).translateObject(0.44f, -0.34f, 0.0f);
-        toko.get(0).getChildObject().get(16).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(13).scaleObject(0.3f, 0.8f, 0.3f);
+        toko.get(0).getChildObject().get(13).translateObject(0.44f, -0.34f, 0.73f);
+        toko.get(0).getChildObject().get(13).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
 
         toko.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
@@ -542,9 +477,9 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(17).scaleObject(0.3f, 0.8f, 0.3f);
-        toko.get(0).getChildObject().get(17).translateObject(0.30f, -0.34f, 0.0f);
-        toko.get(0).getChildObject().get(17).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(14).scaleObject(0.3f, 0.8f, 0.3f);
+        toko.get(0).getChildObject().get(14).translateObject(0.30f, -0.34f, 0.73f);
+        toko.get(0).getChildObject().get(14).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
 
         toko.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
@@ -564,9 +499,77 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(18).scaleObject(0.3f, 0.8f, 0.3f);
-        toko.get(0).getChildObject().get(18).translateObject(0.37f, -0.34f, 0.0f);
-        toko.get(0).getChildObject().get(18).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+        toko.get(0).getChildObject().get(15).scaleObject(0.3f, 0.8f, 0.3f);
+        toko.get(0).getChildObject().get(15).translateObject(0.37f, -0.34f, 0.73f);
+        toko.get(0).getChildObject().get(15).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
+
+        // Belakang Pintu Kanan
+        toko.get(0).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0f, 0f, 0f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(16).translateObject(0.05f, -0.035f, 2.9f);
+        toko.get(0).getChildObject().get(16).scaleObject(1.0f, 2.5f, 0.0f);
+
+        // Pintu Depan Kanan
+        toko.get(0).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.7f, 0.7f, 0.7f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(17).translateObject(0.05f, -0.035f, 2.8f);
+        toko.get(0).getChildObject().get(17).scaleObject(1.0f, 2.5f, 0.3f);
+
+        // Pintu Depan Kanan
+        toko.get(0).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.7f, 0.7f, 0.7f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(18).translateObject(-0.05f, -0.035f, 2.8f);
+        toko.get(0).getChildObject().get(18).scaleObject(1.0f, 2.5f, 0.0f);
+
+
 
         // Terop
         toko.add(new Quadric(
@@ -587,7 +590,7 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(1).translateObject(0f, 2.3f, 0.15f);
+        toko.get(1).translateObject(0f, 2.3f, 0.45f);
         toko.get(1).scaleObject(12.0f, 0.1f, 1.5f);
         toko.get(1).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -611,7 +614,7 @@ public class Main {
         ));
         toko.get(2).scaleObject(0.02f, 0.01f, 0.335f);
         toko.get(2).rotateObject((float) Math.toRadians(90f), 1.0f, 0.0f, 0.0f);
-        toko.get(2).translateObject(0.45f, -0.035f, 0.3f);
+        toko.get(2).translateObject(0.45f, -0.035f, 0.7f);
 
         // Palang Kiri
         toko.add(new Quadric(
@@ -633,7 +636,7 @@ public class Main {
         ));
         toko.get(3).scaleObject(0.02f, 0.01f, 0.335f);
         toko.get(3).rotateObject((float) Math.toRadians(90f), 1.0f, 0.0f, 0.0f);
-        toko.get(3).translateObject(-0.45f, -0.035f, 0.3f);
+        toko.get(3).translateObject(-0.45f, -0.035f, 0.7f);
 
 
 
@@ -713,6 +716,83 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "e"));
         awan.get(0).getChildObject().get(2).scaleObject(0.9f, 0.9f, 1.2f);
         awan.get(0).getChildObject().get(2).translateObject(-0.5f, 0.7f, 0.0f);
+
+
+        // Awan 2
+        awan.add(new Quadric(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(1).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(1).translateObject(0.7f, 0.7f, 0.0f);
+        awan.get(1).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+        awan.get(1).getChildObject().add(new Quadric(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(1).getChildObject().get(0).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(1).getChildObject().get(0).translateObject(0.6f, 0.75f, 0.0f);
+        awan.get(1).getChildObject().get(0).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+
+        awan.get(1).getChildObject().add(new Quadric(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(1).getChildObject().get(1).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(1).getChildObject().get(1).translateObject(0.6f, 0.7f, 0.0f);
+
+        awan.get(1).getChildObject().add(new Quadric(Arrays.asList(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.8f, 0.9f, 0.9f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "e"));
+        awan.get(1).getChildObject().get(2).scaleObject(0.9f, 0.9f, 1.2f);
+        awan.get(1).getChildObject().get(2).translateObject(0.5f, 0.7f, 0.0f);
 
 
 
@@ -1726,24 +1806,23 @@ public class Main {
     }
 
     public void input() {
-        //toko rotasi 360
-        if (window.isKeyPressed(GLFW_KEY_E)) {
-            for (Object toko: toko){
-                toko.rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            }
-            for (Object toko: toko.get(0).getChildObject()){
-                toko.rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            }
-        }
+
+
         if (window.isKeyPressed(GLFW_KEY_W)){
 //            eskrim.get(0).rotateObject((float) Math.toRadians(0.1f), 1.0f, 0.0f, 0.0f);
             //eskrim.get(0).translateObject((float) Math.toRadians(0.1f), 0.0f, 0.0f);
             // TOKO + AWAN
-            awan.get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            for (Object awan : awan){
+                awan.rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            }
+
             for (Object awan: awan.get(0).getChildObject()){
                 awan.rotateObject((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
             }
-            toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            for (Object awan: awan.get(1).getChildObject()){
+                awan.rotateObject((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            }
+            toko.get(0).getChildObject().get(16).rotateObject2((float) Math.toRadians(2f),0.0f,1f,0.0f);
 
         }
 
@@ -1798,6 +1877,17 @@ public class Main {
         //buat muter ditempat
         if (window.isKeyPressed(GLFW_KEY_R)) {
             for (Object child: mixue.get(0).getChildObject()){
+                tempCenterPoint = child.updateCenterPoint();
+                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
+                //dikali -1 supaya dia balik 0,0
+
+                child.rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
+
+                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+            }
+
+            // awan
+            for (Object child: awan.get(0).getChildObject()){
                 tempCenterPoint = child.updateCenterPoint();
                 child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
                 //dikali -1 supaya dia balik 0,0

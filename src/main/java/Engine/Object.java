@@ -189,7 +189,6 @@ public class Object extends ShaderProgram{
         // jaga" kalo alamatnya sama jadinya pake new
         model = new Matrix4f().rotate(degree, offsetX, offsetY, offsetZ).mul(new Matrix4f(model));
 
-
     }
     public void scaleObject(Float offsetX, Float offsetY, Float offsetZ){
         // jaga" kalo alamatnya sama jadinya pake new
