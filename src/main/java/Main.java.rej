@@ -1,0 +1,177 @@
+diff a/src/main/java/Main.java b/src/main/java/Main.java	(rejected hunks)
+@@ -829,27 +831,154 @@
+         eskrim.get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(153f),1.0f, 0.0f, 0.0f);
+         eskrim.get(0).getChildObject().get(3).translateObject(0.6f, -0.1f, 0.0f); // 0.0 0.65 0.0
+ 
+-        // tabung dibawah
+-//        eskrim.get(0).getChildObject().add(new Quadric(
+-//                Arrays.asList(
+-//                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+-//                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+-//                ),
+-//                new ArrayList<>(
+-//                        List.of(
+-//                                new Vector3f(-0.5f, 0.5f, 0),
+-//                                new Vector3f(-0.5f, -0.5f, 0),
+-//                                new Vector3f(0.5f, -0.5f, 0),
+-//                                new Vector3f(0.5f, 0.5f, 0.f)
+-//                        )
+-//                ),
+-//                new Vector4f(1.0f, 0.0f, 0.0f, 1f),
+-//                new Vector3f(0.0f, 0.0f, 0.0f),
+-//                0.1f, 1.0f, 0.1f, "t"
+-//        ));
+-//        eskrim.get(0).getChildObject().get(4).scaleObject(0.3f, 0.3f, 0.1f);
+-//        eskrim.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(90f), 1.0f, 0.0f, 0.0f);
+-//        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.6f, 0.0f);
++//         logo
++        eskrim.get(0).getChildObject().add(new Circle(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ),
++                new ArrayList<>(
++                        List.of(
++                                new Vector3f(-0.5f, 0.5f, 0),
++                                new Vector3f(-0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, 0.5f, 0.f)
++                        )
++                ),
++                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
++                new Vector3f(0.0f, 0.0f, 0.0f),
++                0.1f, 0.1f
++        ));
++        eskrim.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(-20f),1.0f, 0.0f, 0.0f);
++        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.5f, 0.13f);
++
++        // mulut
++        eskrim.get(0).getChildObject().add(new Curve(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ),
++                new ArrayList<>(
++                        List.of(
++                                new Vector3f(-0.2f, 0.2f, 0),
++                                new Vector3f(0f, 0f, 0),
++                                new Vector3f(0.2f, 0.2f, 0.f)
++                        )
++                ),
++                new Vector4f(0.0f, 0.0f, 0.0f, 1f)
++
++        ));
++        eskrim.get(0).getChildObject().get(5).scaleObject(0.25f, 0.25f, 0.0f);
++        eskrim.get(0).getChildObject().get(5).translateObject(0.6f, -0.58f, 0.12f);
++
++        // mata
++        eskrim.get(0).getChildObject().add(new Circle(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ),
++                new ArrayList<>(
++                        List.of(
++                                new Vector3f(-0.5f, 0.5f, 0),
++                                new Vector3f(-0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, 0.5f, 0.f)
++                        )
++                ),
++                new Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
++                new Vector3f(0.0f, 0.0f, 0.0f),
++                0.1f, 0.1f
++        ));
++        eskrim.get(0).getChildObject().get(6).scaleObject(0.17f, 0.26f, 0.2f);
++        eskrim.get(0).getChildObject().get(6).rotateObject((float) Math.toRadians(-20f),1.0f, 0.0f, 0.0f);
++        eskrim.get(0).getChildObject().get(6).translateObject(0.56f, -0.47f, 0.13f);
++
++        // mata putih kiri
++        eskrim.get(0).getChildObject().add(new Circle(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ),
++                new ArrayList<>(
++                        List.of(
++                                new Vector3f(-0.5f, 0.5f, 0),
++                                new Vector3f(-0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, 0.5f, 0.f)
++                        )
++                ),
++                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
++                new Vector3f(0.0f, 0.0f, 0.0f),
++                0.1f, 0.1f
++        ));
++        eskrim.get(0).getChildObject().get(7).scaleObject(0.17f, 0.26f, 0.2f);
++        eskrim.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(-20f),1.0f, 0.0f, 0.0f);
++        eskrim.get(0).getChildObject().get(7).translateObject(0.585f, -0.47f, 0.13f);
++
++        eskrim.get(0).getChildObject().add(new Circle(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ),
++                new ArrayList<>(
++                        List.of(
++                                new Vector3f(-0.5f, 0.5f, 0),
++                                new Vector3f(-0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, 0.5f, 0.f)
++                        )
++                ),
++                new Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
++                new Vector3f(0.0f, 0.0f, 0.0f),
++                0.1f, 0.1f
++        ));
++        eskrim.get(0).getChildObject().get(8).scaleObject(0.17f, 0.26f, 0.2f);
++        eskrim.get(0).getChildObject().get(8).rotateObject((float) Math.toRadians(-20f),1.0f, 0.0f, 0.0f);
++        eskrim.get(0).getChildObject().get(8).translateObject(0.64f, -0.47f, 0.13f);
++
++        // mata putih kanan
++        eskrim.get(0).getChildObject().add(new Circle(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ),
++                new ArrayList<>(
++                        List.of(
++                                new Vector3f(-0.5f, 0.5f, 0),
++                                new Vector3f(-0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, 0.5f, 0.f)
++                        )
++                ),
++                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
++                new Vector3f(0.0f, 0.0f, 0.0f),
++                0.1f, 0.1f
++        ));
++        eskrim.get(0).getChildObject().get(9).scaleObject(0.17f, 0.26f, 0.2f);
++        eskrim.get(0).getChildObject().get(9).rotateObject((float) Math.toRadians(-20f),1.0f, 0.0f, 0.0f);
++        eskrim.get(0).getChildObject().get(9).translateObject(0.665f, -0.47f, 0.13f);
++
++        // hidung
++        eskrim.get(0).getChildObject().add(new Circle(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ),
++                new ArrayList<>(
++                        List.of(
++                                new Vector3f(-0.5f, 0.5f, 0),
++                                new Vector3f(-0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, -0.5f, 0),
++                                new Vector3f(0.5f, 0.5f, 0.f)
++                        )
++                ),
++                new Vector4f(1.0f, 0.5f, 0.0f, 1.0f),
++                new Vector3f(0.0f, 0.0f, 0.0f),
++                0.1f, 0.1f
++        ));
++        eskrim.get(0).getChildObject().get(10).scaleObject(0.17f, 0.17f, 0.2f);
++        eskrim.get(0).getChildObject().get(10).rotateObject((float) Math.toRadians(-20f),1.0f, 0.0f, 0.0f);
++        eskrim.get(0).getChildObject().get(10).translateObject(0.6f, -0.51f, 0.13f);
+ 
+ 
+ 
