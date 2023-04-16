@@ -561,6 +561,74 @@ public class Main {
         toko.get(0).getChildObject().get(18).translateObject(0.37f, -0.34f, 0.0f);
         toko.get(0).getChildObject().get(18).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
 
+        // Terop
+        toko.add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0f, 0.0f, 0.0f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(1).translateObject(0f, 2.3f, 0.15f);
+        toko.get(1).scaleObject(12.0f, 0.1f, 1.5f);
+        toko.get(1).rotateObject(0.0f, 0.0f, 0.0f, 0.0f);
+
+        // Palang Kanan
+        toko.add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(0f, 0.0f, 0.0f, 1f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 1.0f, 0.1f, "t"
+        ));
+        toko.get(2).scaleObject(0.02f, 0.01f, 0.335f);
+        toko.get(2).rotateObject((float) Math.toRadians(90f), 1.0f, 0.0f, 0.0f);
+        toko.get(2).translateObject(0.45f, -0.035f, 0.3f);
+
+        // Palang Kiri
+        toko.add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(0f, 0.0f, 0.0f, 1f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 1.0f, 0.1f, "t"
+        ));
+        toko.get(3).scaleObject(0.02f, 0.01f, 0.335f);
+        toko.get(3).rotateObject((float) Math.toRadians(90f), 1.0f, 0.0f, 0.0f);
+        toko.get(3).translateObject(-0.45f, -0.035f, 0.3f);
+
+
 
         // AWAN
         // elipseoid
@@ -638,6 +706,7 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "e"));
         awan.get(0).getChildObject().get(2).scaleObject(0.9f, 0.9f, 1.2f);
         awan.get(0).getChildObject().get(2).translateObject(-0.5f, 0.7f, 0.0f);
+
 
 
         // END TOKO + AWAN
@@ -1497,30 +1566,34 @@ public class Main {
 //            eskrim.get(0).rotateObject((float) Math.toRadians(0.1f), 1.0f, 0.0f, 0.0f);
             //eskrim.get(0).translateObject((float) Math.toRadians(0.1f), 0.0f, 0.0f);
             // TOKO + AWAN
-            //  toko.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(4).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(5).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(6).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(7).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(8).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(9).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(10).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(11).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(12).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(13).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(14).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(15).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(16).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  toko.get(0).getChildObject().get(17).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  awan.get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  awan.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  awan.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            //  awan.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
-            toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(5f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(1).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(2).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(4).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(5).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(6).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(7).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(8).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(9).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(10).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(11).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(12).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(13).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(14).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(15).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(16).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(17).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+        //    toko.get(0).getChildObject().get(18).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            awan.get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            awan.get(0).getChildObject().get(0).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            awan.get(0).getChildObject().get(1).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            awan.get(0).getChildObject().get(2).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
+            toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
             // TOKO + AWAN
 
             if (default_position > limit) {
