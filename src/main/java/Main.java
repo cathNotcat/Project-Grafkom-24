@@ -43,11 +43,11 @@ public class Main {
         window.init();
         GL.createCapabilities();
 
-//        glEnable(GL_DEPTH_TEST);
-//        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-//        glDepthMask(true);
-//        glDepthFunc(GL_LEQUAL);
-//        glDepthRange(0.0f, 1.0f);
+        glEnable(GL_DEPTH_TEST);
+        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+        glDepthMask(true);
+        glDepthFunc(GL_LEQUAL);
+        glDepthRange(0.0f, 1.0f);
 
         camera.setPosition(-0.5f,0,1f);
         camera.setRotation((float) Math.toRadians(0.0f), (float)Math.toRadians(30.0f));
@@ -69,6 +69,8 @@ public class Main {
                 new Vector4f(0.2f, 0.5f, 0.7f, 1f),
                 Arrays.asList(0,1,2,3,1)
         ));
+        bg.get(0).translateObject(0.0f, 0.0f, 1f);
+
 
         // grass
         bg.add(new Rectangle(
@@ -87,6 +89,7 @@ public class Main {
                 new Vector4f(0.0f, 0.7f, 0.0f, 1f),
                 Arrays.asList(0,1,2,3,1)
         ));
+        bg.get(1).translateObject(0.0f, 0.0f, 1f);
 
         // jalan
         bg.add(new Rectangle(
@@ -105,6 +108,8 @@ public class Main {
                 new Vector4f(0.3f, 0.3f, 0.3f, 1f),
                 Arrays.asList(0,1,2,3,1)
         ));
+        bg.get(2).translateObject(0.0f, 0.0f, 1f);
+
 
         // START TOKO + AWAN
 
@@ -983,6 +988,7 @@ public class Main {
 
 
 //        mixue snow king
+
         //buat patokan rotasi ditempat
         mixue.add(new Quadric(
                 Arrays.asList(
@@ -1004,30 +1010,6 @@ public class Main {
         mixue.get(0).scaleObject(1.0f, 1.0f, 1.0f);
         mixue.get(0).translateObject(-0.5f, -0.5f, 0.0f);
 
-
-        //cape
-        mixue.get(0).getChildObject().add(new Rectangle(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.30f, 0.4f, 0),
-                                new Vector3f(-0.55f, -0.4f, 0),
-                                new Vector3f(0.55f, -0.4f, 0),
-                                new Vector3f(0.30f, 0.4f, 0.f)
-                        )
-                ),
-                new Vector4f(1f, 0f, -1.25f, 1f),
-                Arrays.asList(0,1,2,1,2,3)
-
-        ));
-
-        mixue.get(0).getChildObject().get(0).scaleObject(0.5f, 0.5f, 1.0f);
-        mixue.get(0).getChildObject().get(0).rotateObject((float) Math.toRadians(15f), 1f, 0f, 0.0f);
-        mixue.get(0).getChildObject().get(0).translateObject(-0.5f, -0.5f, -0.22f);
-
         //badan snowking
         mixue.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
@@ -1046,11 +1028,35 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "e"
         ));
-        mixue.get(0).getChildObject().get(1).scaleObject(2.0f, 2.0f, 2.0f);
-        mixue.get(0).getChildObject().get(1).translateObject(-0.5f, -0.5f, 0.0f);
+        mixue.get(0).getChildObject().get(0).scaleObject(2.0f, 2.0f, 2.0f);
+        mixue.get(0).getChildObject().get(0).translateObject(-0.5f, -0.5f, 0.0f);
+
+        //cape
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Rectangle(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.30f, 0.4f, 0),
+                                new Vector3f(-0.55f, -0.4f, 0),
+                                new Vector3f(0.55f, -0.4f, 0),
+                                new Vector3f(0.30f, 0.4f, 0.f)
+                        )
+                ),
+                new Vector4f(1f, 0f, -1.25f, 1f),
+                Arrays.asList(0,1,2,1,2,3)
+
+        ));
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(0).scaleObject(0.5f, 0.5f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(0).rotateObject((float) Math.toRadians(-15f), 1f, 0f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(0).translateObject(-0.5f, -0.5f, 0.21f);
+
 
         //kerah kiri
-        mixue.get(0).getChildObject().add(new Object(
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Object(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1067,11 +1073,35 @@ public class Main {
 
         ));
 
-        mixue.get(0).getChildObject().get(2).scaleObject(0.15f, 0.15f, 0.15f);
-        mixue.get(0).getChildObject().get(2).translateObject(-0.615f, -0.36f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).scaleObject(0.15f, 0.15f, 0.15f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).rotateObject((float) Math.toRadians(17f), 1f, 0f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).translateObject(-0.615f, -0.36f, -0.15f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).getChildObject().add(new Object(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.45f, 0.4f, 0),
+                                new Vector3f(-0.55f, -0.4f, 0),
+                                new Vector3f(0.55f, -0.4f, 0),
+                                new Vector3f(0.45f, 0.4f, 0.f)
+
+                        )
+                ),
+                new Vector4f(1f, 0f, 0f, 1f)
+
+        ));
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).getChildObject().get(0).scaleObject(0.32f, 0.115f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).getChildObject().get(0).rotateObject((float) Math.toRadians(-90f), 0f, 1f, 0.f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).getChildObject().get(0).rotateObject((float) Math.toRadians(-20f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(1).getChildObject().get(0).translateObject(-0.665f, -0.35f,0.01f);
 
         //kerah kanan
-        mixue.get(0).getChildObject().add(new Object(
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Object(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1088,13 +1118,36 @@ public class Main {
 
         ));
 
-        mixue.get(0).getChildObject().get(3).scaleObject(0.15f, 0.15f, 0.15f);
-        mixue.get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(180f), 0f, 1f, 0.0f);
-        mixue.get(0).getChildObject().get(3).translateObject(-0.39f, -0.36f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).scaleObject(0.15f, 0.15f, 0.15f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).rotateObject((float) Math.toRadians(180f), 0f, 1f, 0.f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).rotateObject((float) Math.toRadians(17f), 1f, 0f, 0.0f);//
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).translateObject(-0.39f, -0.36f, -0.15f);
 
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).getChildObject().add(new Object(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.45f, 0.4f, 0),
+                                new Vector3f(-0.55f, -0.4f, 0),
+                                new Vector3f(0.55f, -0.4f, 0),
+                                new Vector3f(0.45f, 0.4f, 0.f)
 
+                        )
+                ),
+                new Vector4f(1f, 0f, 0f, 1f)
+
+        ));
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).getChildObject().get(0).scaleObject(0.32f, 0.115f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).getChildObject().get(0).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0.f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).getChildObject().get(0).rotateObject((float) Math.toRadians(20f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(2).getChildObject().get(0).translateObject(-0.335f, -0.35f, 0.01f);
+//
 //        kepala
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1111,11 +1164,11 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "e"
         ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(0).scaleObject(1.5f, 1.5f, 1.5f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(0).translateObject(-0.5f, -0.24f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).scaleObject(1.5f, 1.5f, 1.5f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).translateObject(-0.5f, -0.24f, 0.0f);
 
         //tangan kanan
-        mixue.get(0).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1132,12 +1185,12 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "e"
         ));
-        mixue.get(0).getChildObject().get(4).scaleObject(0.5f, 1.2f, 0.5f);
-        mixue.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(25f), 0f, 0f, 1f);
-        mixue.get(0).getChildObject().get(4).translateObject(-0.30f, -0.52f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(4).scaleObject(0.5f, 1.2f, 0.5f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(25f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(4).translateObject(-0.30f, -0.52f, 0.0f);
 
 //        tangan kiri
-        mixue.get(0).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1154,14 +1207,13 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "e"
         ));
-        mixue.get(0).getChildObject().get(5).scaleObject(0.5f, 1.2f, 0.5f);
-        mixue.get(0).getChildObject().get(5).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(0).getChildObject().get(5).rotateObject((float) Math.toRadians(180f), 1f, 0f, 0f);
-
-        mixue.get(0).getChildObject().get(5).translateObject(-0.7f, -0.42f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(5).scaleObject(0.5f, 1.2f, 0.5f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(5).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(5).rotateObject((float) Math.toRadians(180f), 1f, 0f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(5).translateObject(-0.7f, -0.42f, 0.0f);
 
         //tongkat sakti
-        mixue.get(0).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1174,17 +1226,17 @@ public class Main {
                                 new Vector3f(0.5f, 0.5f, 0.f)
                         )
                 ),
-                new Vector4f(1f, 1f, 1f, 1f),
+                new Vector4f(1f, 0.8f, 0.0f, 1),
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 1.0f, 0.1f, "t"
         ));
-        mixue.get(0).getChildObject().get(6).scaleObject(0.01f, 0.01f, 0.3f);
-        mixue.get(0).getChildObject().get(6).rotateObject((float) Math.toRadians(90f), 1f, 0f, 0f);
-        mixue.get(0).getChildObject().get(6).translateObject(-0.79f, -0.45f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(6).scaleObject(0.01f, 0.01f, 0.3f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(6).rotateObject((float) Math.toRadians(90f), 1f, 0f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(6).translateObject(-0.79f, -0.45f, 0.0f);
 
         // es krim snow king
         //cone
-        mixue.get(0).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1202,14 +1254,14 @@ public class Main {
                 0.1f, 0.1f, 0.1f,
                 "c"
         ));
-        mixue.get(0).getChildObject().get(7).scaleObject(0.05f, 0.05f, 0.15f); // 0.5, 0.5, 0.8
-        mixue.get(0).getChildObject().get(7).rotateObject(90f,0.0f, 1f, 0.0f);
-        mixue.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
-        mixue.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(333f),1.0f, 0.0f, 0.0f);
-        mixue.get(0).getChildObject().get(7).translateObject(-0.79f, -0.25f, 0.0f); //0.0, -0.5, 0.0
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).scaleObject(0.05f, 0.05f, 0.15f); // 0.5, 0.5, 0.8
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).rotateObject(90f,0.0f, 1f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(333f),1.0f, 0.0f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).translateObject(-0.79f, -0.25f, 0.0f); //0.0, -0.5, 0.0
 
         // es bawah
-        mixue.get(0).getChildObject().get(7).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1227,13 +1279,12 @@ public class Main {
                 0.1f, 0.1f, 0.1f,
                 "s"
         ));
-        mixue.get(0).getChildObject().get(7).getChildObject().get(0).scaleObject(0.08f, 0.03f, 0.08f);
-        mixue.get(0).getChildObject().get(7).getChildObject().get(0).rotateObject((float) Math.toRadians(-5f),0f, 0.0f, 1.0f);
-
-        mixue.get(0).getChildObject().get(7).getChildObject().get(0).translateObject(-0.79f, -0.135f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(0).scaleObject(0.08f, 0.03f, 0.08f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(0).rotateObject((float) Math.toRadians(-5f),0f, 0.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(0).translateObject(-0.79f, -0.135f, 0.0f);
 
         // es tengah
-        mixue.get(0).getChildObject().get(7).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1251,13 +1302,12 @@ public class Main {
                 0.1f, 0.1f, 0.1f,
                 "s"
         ));
-        mixue.get(0).getChildObject().get(7).getChildObject().get(1).scaleObject(0.06f, 0.03f, 0.06f); // 0.65 0.2 0.65
-        mixue.get(0).getChildObject().get(7).getChildObject().get(1).rotateObject((float) Math.toRadians(-5f),0f, 0.0f, 1.0f);
-
-        mixue.get(0).getChildObject().get(7).getChildObject().get(1).translateObject(-0.79f, -0.12f, 0.0f); // 0.0 0.3 0.0
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(1).scaleObject(0.06f, 0.03f, 0.06f); // 0.65 0.2 0.65
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(1).rotateObject((float) Math.toRadians(-5f),0f, 0.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(1).translateObject(-0.79f, -0.12f, 0.0f); // 0.0 0.3 0.0
 
         // es atas
-        mixue.get(0).getChildObject().get(7).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1275,13 +1325,12 @@ public class Main {
                 0.1f, 0.1f, 0.1f,
                 "s"
         ));
-        mixue.get(0).getChildObject().get(7).getChildObject().get(2).scaleObject(0.04f, 0.02f, 0.04f); // 0.5 0.18 0.5
-        mixue.get(0).getChildObject().get(7).getChildObject().get(2).rotateObject((float) Math.toRadians(-6f),0f, 0.0f, 1.0f);
-
-        mixue.get(0).getChildObject().get(7).getChildObject().get(2).translateObject(-0.79f, -0.105f, 0.0f); // 0.0 0.44 0.0
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(2).scaleObject(0.04f, 0.02f, 0.04f); // 0.5 0.18 0.5
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(2).rotateObject((float) Math.toRadians(-6f),0f, 0.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(2).translateObject(-0.79f, -0.105f, 0.0f); // 0.0 0.44 0.0
 
         // es atas bentuk cone
-        mixue.get(0).getChildObject().get(7).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1300,16 +1349,15 @@ public class Main {
                 "c"
         ));
 
-        mixue.get(0).getChildObject().get(7).getChildObject().get(3).scaleObject(0.015f, 0.015f, 0.015f); // 0.2 0.2 0.2
-        mixue.get(0).getChildObject().get(7).getChildObject().get(3).rotateObject(90f,0.0f, 1f, 0.0f);
-        mixue.get(0).getChildObject().get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
-        mixue.get(0).getChildObject().get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(153f),1.0f, 0.0f, 0.0f);
-        mixue.get(0).getChildObject().get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(-7f),0f, 0.0f, 1.0f);
-
-        mixue.get(0).getChildObject().get(7).getChildObject().get(3).translateObject(-0.788f, -0.083f, 0.0f); // 0.0 0.65 0.0
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(3).scaleObject(0.015f, 0.015f, 0.015f); // 0.2 0.2 0.2
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(3).rotateObject(90f,0.0f, 1f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(270f),0.0f, 0.0f, 1.0f); // 4.7f
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(153f),1.0f, 0.0f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(3).rotateObject((float) Math.toRadians(-7f),0f, 0.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(7).getChildObject().get(3).translateObject(-0.788f, -0.083f, 0.0f); // 0.0 0.65 0.0
 
         //mata
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1326,10 +1374,10 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "e"
         ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(1).scaleObject(0.3f, 0.4f, 0.3f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(1).translateObject(-0.55f, -0.21f, 0.15f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(0).scaleObject(0.3f, 0.4f, 0.3f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(0).translateObject(-0.55f, -0.21f, -0.115f);
 
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Circle(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1344,13 +1392,14 @@ public class Main {
                 ),
                 new Vector4f(1f, 1f, 1f, 1),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
 
-        mixue.get(0).getChildObject().get(1).getChildObject().get(2).scaleObject(0.1f, 0.3f, 0.3f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(2).translateObject(-0.53f, -0.21f, 0.15f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(1).scaleObject(0.15f, 0.3f, 0.3f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(1).translateObject(-0.53f, -0.21f, -0.13f);
 
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Circle(
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1365,12 +1414,12 @@ public class Main {
                 ),
                 new Vector4f(0.0f, 0.0f, 1.0f, 1f),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(3).scaleObject(0.3f, 0.4f, 0.3f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(3).translateObject(-0.45f, -0.21f, 0.15f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(2).scaleObject(0.3f, 0.4f, 0.3f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(2).translateObject(-0.45f, -0.21f, -0.115f);
 
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Circle(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1385,14 +1434,14 @@ public class Main {
                 ),
                 new Vector4f(1f, 1f, 1f, 1),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
 
-        mixue.get(0).getChildObject().get(1).getChildObject().get(4).scaleObject(0.1f, 0.3f, 0.3f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(4).translateObject(-0.43f, -0.21f, 0.15f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(3).scaleObject(0.1f, 0.3f, 0.3f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(3).translateObject(-0.43f, -0.21f, -0.115f);
 
         //hidung
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1409,252 +1458,12 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "c"
         ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(5).scaleObject(0.03f, 0.03f, 0.1f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(5).rotateObject((float) Math.toRadians(10f), 1f, 0f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(5).translateObject(-0.5f, -0.275f, 0.23f);
-
-        //mahkota
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "r"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(6).scaleObject(0.1f, 0.1f, 0.1f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(6).rotateObject((float) Math.toRadians(90f), 1f, 0f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(6).translateObject(-0.5f, -0.09f, 0.0f);
-
-        //mahkota
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "p"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(7).scaleObject(0.2f, 1.0f, 1.0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(-25f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(7).translateObject(-0.465f, -0.125f, -0.09f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "p"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(8).scaleObject(0.2f, 1.0f, 1.0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(25f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(8).translateObject(-0.535f, -0.125f, -0.09f);
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "p"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(9).scaleObject(0.2f, 1.0f, 1.0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(9).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(9).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(9).translateObject(-0.5f, -0.125f, 0.08f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "p"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(10).scaleObject(0.2f, 1.0f, 1.0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(10).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(10).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(10).rotateObject((float) Math.toRadians(115f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(10).translateObject(-0.43f, -0.125f, 0.0f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "p"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(11).scaleObject(0.2f, 1.0f, 1.0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(11).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(11).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(11).rotateObject((float) Math.toRadians(75f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(11).translateObject(-0.575f, -0.125f, 0.0f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "s"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(12).scaleObject(0.03f, 0.03f, 0.03f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(12).rotateObject((float) Math.toRadians(25f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(12).translateObject(-0.465f, -0.05f, -0.08f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "s"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(13).scaleObject(0.03f, 0.03f, 0.03f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(13).rotateObject((float) Math.toRadians(-25f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(13).translateObject(-0.535f, -0.05f, -0.08f);
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "s"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(14).scaleObject(0.03f, 0.03f, 0.03f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(14).translateObject(-0.5f, -0.05f, 0.08f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "s"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(15).scaleObject(0.03f, 0.03f, 0.03f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(15).rotateObject((float) Math.toRadians(115f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(15).translateObject(-0.43f, -0.05f, 0.0f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "s"
-        ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(16).scaleObject(0.03f, 0.03f, 0.03f);
-
-        mixue.get(0).getChildObject().get(1).getChildObject().get(16).rotateObject((float) Math.toRadians(75f), 0.0f, 1f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(16).translateObject(-0.575f, -0.05f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(4).scaleObject(0.03f, 0.03f, 0.1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(4).rotateObject((float) Math.toRadians(180f), 1f, 0f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(4).translateObject(-0.5f, -0.275f, -0.21f);
 
         //mulut
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Curve(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Curve(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1669,12 +1478,12 @@ public class Main {
                 new Vector4f(0f, 0f, 1f, 1f)
 
         ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(17).scaleObject(0.25f, 0.25f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(5).scaleObject(0.25f, 0.25f, 0f);
 
-        mixue.get(0).getChildObject().get(1).getChildObject().get(17).translateObject(-0.5f, -0.36f, 0.12f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(5).translateObject(-0.5f, -0.36f, -0.125f);
 
         //lidah
-        mixue.get(0).getChildObject().get(1).getChildObject().add(new Quadric(
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1690,36 +1499,234 @@ public class Main {
                 new Vector3f(0.0f, 0.0f, 0.0f),
                 0.1f, 0.1f, 0.1f, "s"
         ));
-        mixue.get(0).getChildObject().get(1).getChildObject().get(18).scaleObject(0.04f, 0.03f, 0f);
-        mixue.get(0).getChildObject().get(1).getChildObject().get(18).rotateObject((float) Math.toRadians(-25f), 0.0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(6).scaleObject(0.04f, 0.03f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(6).rotateObject((float) Math.toRadians(-25f), 0.0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(6).translateObject(-0.55f, -0.313f, -0.129f);
 
-        mixue.get(0).getChildObject().get(1).getChildObject().get(18).translateObject(-0.55f, -0.313f, 0.1f);
+        //mahkota
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(7).scaleObject(0.2f, 1.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(7).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(7).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(7).rotateObject((float) Math.toRadians(-25f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(7).translateObject(-0.465f, -0.125f, -0.09f);
 
-//        mixue.get(0).getChildObject().get(7).translateObject(-0f, -0f, 0.0f);
-//        mixue.get(0).getChildObject().add(new Quadric(
-//                Arrays.asList(
-//                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-//                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-//                ),
-//                new ArrayList<>(
-//                        List.of(
-//                                new Vector3f(-0.5f, 0.5f, 0),
-//                                new Vector3f(-0.5f, -0.5f, 0),
-//                                new Vector3f(0.5f, -0.5f, 0),
-//                                new Vector3f(0.5f, 0.5f, 0.f)
-//                        )
-//                ),
-//                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
-//                new Vector3f(0.0f, 0.0f, 0.0f),
-//                0.1f, 0.1f, 0.1f, "j"
-//        ));
-//        mixue.get(0).getChildObject().get(7).scaleObject(0.5f, 0.5f, 0.5f);
-//        mixue.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(90f), 1f, 0f, 0f);
-//        mixue.get(0).getChildObject().get(7).translateObject(-0f, -0f, 0.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(8).scaleObject(0.2f, 1.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(8).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(8).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(8).rotateObject((float) Math.toRadians(25f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(8).translateObject(-0.535f, -0.125f, -0.09f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(9).scaleObject(0.2f, 1.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(9).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(9).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(9).translateObject(-0.5f, -0.125f, 0.08f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(10).scaleObject(0.2f, 1.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(10).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(10).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(10).rotateObject((float) Math.toRadians(115f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(10).translateObject(-0.43f, -0.125f, 0.0f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "p"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(11).scaleObject(0.2f, 1.0f, 1.0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(11).rotateObject((float) Math.toRadians(90f), 0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(11).rotateObject((float) Math.toRadians(-45f), 0f, 0f, 1f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(11).rotateObject((float) Math.toRadians(75f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(11).translateObject(-0.575f, -0.125f, 0.0f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(12).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(12).rotateObject((float) Math.toRadians(25f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(12).translateObject(-0.465f, -0.05f, -0.08f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(13).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(13).rotateObject((float) Math.toRadians(-25f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(13).translateObject(-0.535f, -0.05f, -0.08f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(14).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(14).translateObject(-0.5f, -0.05f, 0.08f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(15).scaleObject(0.03f, 0.03f, 0.03f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(15).rotateObject((float) Math.toRadians(115f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(15).translateObject(-0.43f, -0.05f, 0.0f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.5f, 0.5f, 0),
+                                new Vector3f(-0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, -0.5f, 0),
+                                new Vector3f(0.5f, 0.5f, 0.f)
+                        )
+                ),
+                new Vector4f(1.0f, 1.0f, 0f, 0.0f),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "s"
+        ));
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(16).scaleObject(0.03f, 0.03f, 0.03f);
+
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(16).rotateObject((float) Math.toRadians(75f), 0.0f, 1f, 0f);
+        mixue.get(0).getChildObject().get(0).getChildObject().get(3).getChildObject().get(16).translateObject(-0.575f, -0.05f, 0.0f);
+
+
 
     }
 
     public void input() {
+        //toko rotasi 360
         if (window.isKeyPressed(GLFW_KEY_E)) {
             for (Object toko: toko){
                 toko.rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
@@ -1737,26 +1744,68 @@ public class Main {
                 awan.rotateObject((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
             }
             toko.get(0).getChildObject().get(3).rotateObject2((float) Math.toRadians(2f), 0.0f, 1.0f, 0.0f);
-            // TOKO + AWAN
 
-            if (default_position > limit) {
+        }
+
+        // snow king dan es krim geser kanan kiri
+        if (window.isKeyPressed(GLFW_KEY_D)) {
+            if (default_position > limit *3) {
                 default_position -= 0.005f;
-                System.out.println(default_position);
-                for(int i = 0 ; i <= 4; i++){
-                    tempCenterPoint = mixue.get(0).getChildObject().get(1).updateCenterPoint();
-                    mixue.get(0).getChildObject().get(1).translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
-                    mixue.get(0).getChildObject().get(1).rotateObject((float) Math.toRadians(direction), 0f, 0f, 1f);
-                    mixue.get(0).getChildObject().get(1).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
-
-                    mixue.get(0).getChildObject().get(1).translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+                eskrim.get(0).translateObject((float) Math.toRadians(-direction), 0.0f, 0.0f);
+                for (Object object : mixue) {
+                    object.translateObject((float) Math.toRadians(direction), 0.0f, 0.0f);
+//                    object.rotateObject((float) Math.toRadians(direction), 1f, 0f, 0f);
                 }
-
-//                mixue.get(0).getChildObject().get(1).getChildObject().get(0).rotateObject((float) Math.toRadians(0.1f), 0f, 0f, 1f);
             }else{
                 direction = -(direction);
                 default_position = -0.2f;
             }
+        }
 
+        // memperkecil
+        if (window.isKeyPressed(GLFW_KEY_K)) {
+            tempCenterPointParent = eskrim.get(0).updateCenterPoint();
+            eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
+            eskrim.get(0).scaleObject(0.99f, 0.99f, 0.99f);
+            eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
+
+            for (Object child: mixue){
+                tempCenterPoint = child.updateCenterPoint();
+                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
+                child.scaleObject(0.995f, 0.995f, 0.995f);
+
+                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+            }
+
+        }
+
+        //memperbesar
+        if (window.isKeyPressed(GLFW_KEY_B)) {
+            tempCenterPointParent = eskrim.get(0).updateCenterPoint();
+            eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
+            eskrim.get(0).scaleObject(1.005f, 1.005f, 1.005f);
+            eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
+
+            for (Object child: mixue){
+                tempCenterPoint = child.updateCenterPoint();
+                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
+                child.scaleObject(1.005f, 1.005f, 1.005f);
+
+                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+            }
+        }
+
+        //buat muter ditempat
+        if (window.isKeyPressed(GLFW_KEY_R)) {
+            for (Object child: mixue.get(0).getChildObject()){
+                tempCenterPoint = child.updateCenterPoint();
+                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
+                //dikali -1 supaya dia balik 0,0
+
+                child.rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
+
+                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+            }
 
             // es krim muter
             tempCenterPointParent = eskrim.get(0).updateCenterPoint();
@@ -1770,70 +1819,28 @@ public class Main {
                 child.rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
                 child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
             }
-        }
-        if (window.isKeyPressed(GLFW_KEY_D)){
-            mixue.get(0).getChildObject().get(1).getChildObject().get(7).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
-            mixue.get(0).getChildObject().get(1).getChildObject().get(8).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
 
         }
+        // es krim gerak" kepala snowking goyang
+        if (window.isKeyPressed(GLFW_KEY_S)) {
 
-        // snow king dan es krim geser kanan kiri
-        if (window.isKeyPressed(GLFW_KEY_L)) {
-            if (default_position > limit *3) {
-                default_position -= 0.005f;
-                eskrim.get(0).translateObject((float) Math.toRadians(-direction), 0.0f, 0.0f);
-                for (Object object : mixue) {
-                    object.translateObject((float) Math.toRadians(direction), 0.0f, 0.0f);
-//                    object.rotateObject((float) Math.toRadians(direction), 1f, 0f, 0f);
-                }
-            }else{
-                direction = -(direction);
-                default_position = -0.2f;
-            }
-        }
-        // memperkecil
-        if (window.isKeyPressed(GLFW_KEY_I)) {
-            tempCenterPointParent = eskrim.get(0).updateCenterPoint();
-            eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
-            eskrim.get(0).scaleObject(0.99f, 0.99f, 0.99f);
-            eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
-        }
-        //ngebesarin
-        if (window.isKeyPressed(GLFW_KEY_K)) {
-            tempCenterPointParent = eskrim.get(0).updateCenterPoint();
-            eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
-            eskrim.get(0).scaleObject(1.05f, 1.05f, 1.05f);
-            eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
-
-            for (Object child: mixue){
-                tempCenterPoint = child.updateCenterPoint();
-                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
-                child.scaleObject(1.005f, 1.005f, 1.005f);
-
-                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
-            }
-        }
-        //buat muter ditempat
-        if (window.isKeyPressed(GLFW_KEY_R)) {
-            for (Object child: mixue.get(0).getChildObject()){
-                tempCenterPoint = child.updateCenterPoint();
-                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
-                //dikali -1 supaya dia balik 0,0
-
-                child.rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
-
-                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
-            }
-
-            // es krim gerak"
             if (default_position > limit) {
                 default_position -= 0.005f;
                 System.out.println(default_position);
+
                 for(int i = 0 ; i <= 7; i++){
                     tempCenterPointParent = eskrim.get(0).updateCenterPoint();
                     eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
                     eskrim.get(0).rotateObject((float) Math.toRadians(direction), 0.0f, 0.0f, 1.0f);
                     eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
+
+                    tempCenterPoint = mixue.get(0).getChildObject().get(0).getChildObject().get(3).updateCenterPoint();
+                    mixue.get(0).getChildObject().get(0).getChildObject().get(3).translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
+                    mixue.get(0).getChildObject().get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(direction), 0f, 0f, 1f);
+                    mixue.get(0).getChildObject().get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
+                    mixue.get(0).getChildObject().get(0).getChildObject().get(3).translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+
+
                 }
             }
             else{
@@ -1872,11 +1879,8 @@ public class Main {
             for(Object object:mixue){
                 object.draw();
             }
-            for(Object object:kurva){
-                object.draw();
-            }
 
-//            mixue.get(0).getChildObject().get(1).getChildObject().get(6).drawLine();
+
             glDisableVertexAttribArray(0);
             glfwPollEvents();
         }
