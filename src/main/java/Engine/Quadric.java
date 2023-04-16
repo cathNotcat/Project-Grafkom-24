@@ -26,7 +26,7 @@ public class Quadric extends Circle{
     int stackCount = 200, sectorCount = 300;
     String choice ;
 
-    float r1 = 0.63f, r2 = 0.35f, h = 2.0f;
+    float r1 = 0.63f, r2 = 0.35f, h = 2.3f;
 
     public Quadric(List<ShaderModuleData> shaderModuleDataList, List<Vector3f> vertices, Vector4f color, Vector3f cp, Float rx, Float ry, Float rz, String choice) {
         super(shaderModuleDataList, vertices, color, cp, rx, ry);
