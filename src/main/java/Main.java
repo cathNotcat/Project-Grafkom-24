@@ -920,7 +920,7 @@ public class Main {
         eskrim.get(0).getChildObject().get(3).translateObject(0.6f, -0.105f, 0.0f); // 0.0 0.65 0.0
 
 //         logo
-        eskrim.get(0).getChildObject().add(new Circle(
+        eskrim.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -935,10 +935,10 @@ public class Main {
                 ),
                 new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
-        eskrim.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.5f, -0.115f);
+//        eskrim.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
+        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.5f, -0.05f);
 
         // mulut
         eskrim.get(0).getChildObject().add(new Curve(
@@ -956,12 +956,12 @@ public class Main {
                 new Vector4f(0.0f, 0.0f, 0.0f, 1f)
 
         ));
-        eskrim.get(0).getChildObject().get(5).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
+        eskrim.get(0).getChildObject().get(5).rotateObject((float) Math.toRadians(-17.5f),1.0f, 0.0f, 0.0f);
         eskrim.get(0).getChildObject().get(5).scaleObject(0.23f, 0.25f, 0.0f);
-        eskrim.get(0).getChildObject().get(5).translateObject(0.6f, -0.58f, -0.115f);
+        eskrim.get(0).getChildObject().get(5).translateObject(0.6f, -0.58f, -0.14f);
 
         // mata
-        eskrim.get(0).getChildObject().add(new Circle(
+        eskrim.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -976,14 +976,14 @@ public class Main {
                 ),
                 new Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
         eskrim.get(0).getChildObject().get(6).scaleObject(0.17f, 0.26f, 0.2f);
         eskrim.get(0).getChildObject().get(6).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(6).translateObject(0.56f, -0.47f, -0.125f);
+        eskrim.get(0).getChildObject().get(6).translateObject(0.56f, -0.475f, -0.125f);
 
         // mata putih kiri
-        eskrim.get(0).getChildObject().get(6).getChildObject().add(new Circle(
+        eskrim.get(0).getChildObject().get(6).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -998,13 +998,13 @@ public class Main {
                 ),
                 new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
         eskrim.get(0).getChildObject().get(6).getChildObject().get(0).scaleObject(0.17f, 0.26f, 0.2f);
         eskrim.get(0).getChildObject().get(6).getChildObject().get(0).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(6).getChildObject().get(0).translateObject(0.585f, -0.47f, -0.125f);
+        eskrim.get(0).getChildObject().get(6).getChildObject().get(0).translateObject(0.585f, -0.475f, -0.125f);
 
-        eskrim.get(0).getChildObject().add(new Circle(
+        eskrim.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1019,14 +1019,14 @@ public class Main {
                 ),
                 new Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
         eskrim.get(0).getChildObject().get(7).scaleObject(0.17f, 0.26f, 0.2f);
         eskrim.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(7).translateObject(0.64f, -0.47f, -0.125f);
+        eskrim.get(0).getChildObject().get(7).translateObject(0.64f, -0.475f, -0.125f);
 
         // mata putih kanan
-        eskrim.get(0).getChildObject().get(7).getChildObject().add(new Circle(
+        eskrim.get(0).getChildObject().get(7).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1041,14 +1041,14 @@ public class Main {
                 ),
                 new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f,"e"
         ));
         eskrim.get(0).getChildObject().get(7).getChildObject().get(0).scaleObject(0.17f, 0.26f, 0.2f);
         eskrim.get(0).getChildObject().get(7).getChildObject().get(0).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(7).getChildObject().get(0).translateObject(0.665f, -0.47f, -0.125f);
+        eskrim.get(0).getChildObject().get(7).getChildObject().get(0).translateObject(0.665f, -0.475f, -0.125f);
 
         // hidung
-        eskrim.get(0).getChildObject().add(new Circle(
+        eskrim.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
@@ -1063,11 +1063,11 @@ public class Main {
                 ),
                 new Vector4f(1.0f, 0.5f, 0.0f, 1.0f),
                 new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f
+                0.1f, 0.1f, 0.1f, "e"
         ));
         eskrim.get(0).getChildObject().get(8).scaleObject(0.17f, 0.17f, 0.2f);
         eskrim.get(0).getChildObject().get(8).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(8).translateObject(0.6f, -0.51f, -0.115f);
+        eskrim.get(0).getChildObject().get(8).translateObject(0.6f, -0.51f, -0.135f);
 
         // boba 1
         eskrim.get(0).getChildObject().add(new Quadric(
