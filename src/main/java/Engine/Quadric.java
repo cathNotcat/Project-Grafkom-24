@@ -11,14 +11,6 @@ import static java.lang.Math.sin;
 import static org.lwjgl.opengl.GL15.*;
 
 public class Quadric extends Circle{
-    float innerRadius = 0.8f; // inner radius of the torus
-    float outerRadius = 1.0f; // outer radius of the torus
-    int sides = 32; // number of sides used to draw the torus
-    int rings = 16; // number of rings used to draw the torus
-
-    // Frustum of a cone
-
-
 
     Float rz;
     List<Integer> index;
@@ -26,7 +18,7 @@ public class Quadric extends Circle{
     int stackCount = 200, sectorCount = 300;
     String choice ;
 
-    float r1 = 0.63f, r2 = 0.35f, h = 2.3f;
+    float r1 = 0.6f, r2 = 0.35f, h = 2.3f;
 
     public Quadric(List<ShaderModuleData> shaderModuleDataList, List<Vector3f> vertices, Vector4f color, Vector3f cp, Float rx, Float ry, Float rz, String choice) {
         super(shaderModuleDataList, vertices, color, cp, rx, ry);
