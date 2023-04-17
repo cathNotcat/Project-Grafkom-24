@@ -504,48 +504,26 @@ public class Main {
         toko.get(0).getChildObject().get(15).rotateObject((float) Math.toRadians(90f), 0.0f, 0.0f, 1f);
 
         // Belakang Pintu Kanan
-        toko.get(0).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.0f, 0.0f, 0),
-                                new Vector3f(-0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, 0.0f, 0.f)
-                        )
-                ),
-                new Vector4f(0f, 0f, 0f, 1),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "b"
-        ));
-
-        toko.get(0).getChildObject().get(16).translateObject(0.05f, -0.035f, 2.9f);
-        toko.get(0).getChildObject().get(16).scaleObject(1.0f, 2.5f, 0.0f);
-
-        // Pintu Depan Kanan
-        toko.get(0).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.0f, 0.0f, 0),
-                                new Vector3f(-0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, -0.0f, 0),
-                                new Vector3f(0.0f, 0.0f, 0.f)
-                        )
-                ),
-                new Vector4f(0.7f, 0.7f, 0.7f, 1),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "b"
-        ));
-
-        toko.get(0).getChildObject().get(17).translateObject(0.05f, -0.035f, 2.8f);
-        toko.get(0).getChildObject().get(17).scaleObject(1.0f, 2.5f, 0.3f);
+        //      toko.get(0).getChildObject().add(new Quadric(
+        //              Arrays.asList(
+        //                      new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+        //                      new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+        //              ),
+        //              new ArrayList<>(
+        //                      List.of(
+        //                              new Vector3f(-0.0f, 0.0f, 0),
+        //                              new Vector3f(-0.0f, -0.0f, 0),
+        //                              new Vector3f(0.0f, -0.0f, 0),
+        //                              new Vector3f(0.0f, 0.0f, 0.f)
+        //                      )
+        //              ),
+        //              new Vector4f(0f, 0f, 0f, 1),
+        //              new Vector3f(0.0f, 0.0f, 0.0f),
+        //              0.1f, 0.1f, 0.1f, "b"
+        //      ));
+//
+        //      toko.get(0).getChildObject().get(16).translateObject(0.05f, -0.035f, 2.9f);
+        //      toko.get(0).getChildObject().get(16).scaleObject(1.0f, 2.5f, 0.0f);
 
         // Pintu Depan Kanan
         toko.get(0).getChildObject().add(new Quadric(
@@ -566,8 +544,30 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "b"
         ));
 
-        toko.get(0).getChildObject().get(18).translateObject(-0.05f, -0.035f, 2.8f);
-        toko.get(0).getChildObject().get(18).scaleObject(1.0f, 2.5f, 0.0f);
+        toko.get(0).getChildObject().get(16).translateObject(0.05f, -0.035f, 2.8f);
+        toko.get(0).getChildObject().get(16).scaleObject(1.0f, 2.5f, 0.3f);
+
+        // Pintu Depan kiri
+        toko.get(0).getChildObject().add(new Quadric(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ),
+                new ArrayList<>(
+                        List.of(
+                                new Vector3f(-0.0f, 0.0f, 0),
+                                new Vector3f(-0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, -0.0f, 0),
+                                new Vector3f(0.0f, 0.0f, 0.f)
+                        )
+                ),
+                new Vector4f(0.7f, 0.7f, 0.7f, 1),
+                new Vector3f(0.0f, 0.0f, 0.0f),
+                0.1f, 0.1f, 0.1f, "b"
+        ));
+
+        toko.get(0).getChildObject().get(17).translateObject(-0.05f, -0.035f, 2.8f);
+        toko.get(0).getChildObject().get(17).scaleObject(1.0f, 2.5f, 0.0f);
 
 
 
@@ -798,7 +798,7 @@ public class Main {
 
         // END TOKO + AWAN
 
-       // START ES KRIM
+        // START ES KRIM
         //gelas
         eskrim.add(new Quadric(
                 Arrays.asList(
@@ -938,7 +938,7 @@ public class Main {
                 0.1f, 0.1f, 0.1f, "e"
         ));
 //        eskrim.get(0).getChildObject().get(4).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.5f, -0.05f);
+        eskrim.get(0).getChildObject().get(4).translateObject(0.6f, -0.5f, -0.06f);
 
         // mulut
         eskrim.get(0).getChildObject().add(new Curve(
@@ -958,7 +958,7 @@ public class Main {
         ));
         eskrim.get(0).getChildObject().get(5).rotateObject((float) Math.toRadians(-17.5f),1.0f, 0.0f, 0.0f);
         eskrim.get(0).getChildObject().get(5).scaleObject(0.23f, 0.25f, 0.0f);
-        eskrim.get(0).getChildObject().get(5).translateObject(0.6f, -0.58f, -0.14f);
+        eskrim.get(0).getChildObject().get(5).translateObject(0.6f, -0.58f, -0.148f);
 
         // mata
         eskrim.get(0).getChildObject().add(new Quadric(
@@ -980,29 +980,7 @@ public class Main {
         ));
         eskrim.get(0).getChildObject().get(6).scaleObject(0.17f, 0.26f, 0.2f);
         eskrim.get(0).getChildObject().get(6).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(6).translateObject(0.56f, -0.475f, -0.125f);
-
-        // mata putih kiri
-        eskrim.get(0).getChildObject().get(6).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f, "e"
-        ));
-        eskrim.get(0).getChildObject().get(6).getChildObject().get(0).scaleObject(0.17f, 0.26f, 0.2f);
-        eskrim.get(0).getChildObject().get(6).getChildObject().get(0).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(6).getChildObject().get(0).translateObject(0.585f, -0.475f, -0.125f);
+        eskrim.get(0).getChildObject().get(6).translateObject(0.56f, -0.475f, -0.135f);
 
         eskrim.get(0).getChildObject().add(new Quadric(
                 Arrays.asList(
@@ -1023,29 +1001,7 @@ public class Main {
         ));
         eskrim.get(0).getChildObject().get(7).scaleObject(0.17f, 0.26f, 0.2f);
         eskrim.get(0).getChildObject().get(7).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(7).translateObject(0.64f, -0.475f, -0.125f);
-
-        // mata putih kanan
-        eskrim.get(0).getChildObject().get(7).getChildObject().add(new Quadric(
-                Arrays.asList(
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
-                ),
-                new ArrayList<>(
-                        List.of(
-                                new Vector3f(-0.5f, 0.5f, 0),
-                                new Vector3f(-0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, -0.5f, 0),
-                                new Vector3f(0.5f, 0.5f, 0.f)
-                        )
-                ),
-                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
-                new Vector3f(0.0f, 0.0f, 0.0f),
-                0.1f, 0.1f, 0.1f,"e"
-        ));
-        eskrim.get(0).getChildObject().get(7).getChildObject().get(0).scaleObject(0.17f, 0.26f, 0.2f);
-        eskrim.get(0).getChildObject().get(7).getChildObject().get(0).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(7).getChildObject().get(0).translateObject(0.665f, -0.475f, -0.125f);
+        eskrim.get(0).getChildObject().get(7).translateObject(0.64f, -0.475f, -0.135f);
 
         // hidung
         eskrim.get(0).getChildObject().add(new Quadric(
@@ -1067,7 +1023,7 @@ public class Main {
         ));
         eskrim.get(0).getChildObject().get(8).scaleObject(0.17f, 0.17f, 0.2f);
         eskrim.get(0).getChildObject().get(8).rotateObject((float) Math.toRadians(-12f),1.0f, 0.0f, 0.0f);
-        eskrim.get(0).getChildObject().get(8).translateObject(0.6f, -0.51f, -0.135f);
+        eskrim.get(0).getChildObject().get(8).translateObject(0.6f, -0.51f, -0.145f);
 
         // boba 1
         eskrim.get(0).getChildObject().add(new Quadric(
@@ -1914,6 +1870,17 @@ public class Main {
 
     public void input() {
 
+        if (window.isKeyPressed(GLFW_KEY_E)){
+            for (Object toko : toko){
+
+                toko.rotateObject2((float) Math.toRadians(2f),0.0f,1f,0.0f);
+
+            }
+            for (Object child : toko.get(0).getChildObject()){
+                child.rotateObject2((float) Math.toRadians(2f),0.0f,1f,0.0f);
+            }
+        }
+
 
         if (window.isKeyPressed(GLFW_KEY_W)){
 //            eskrim.get(0).rotateObject((float) Math.toRadians(0.1f), 1.0f, 0.0f, 0.0f);
@@ -1933,15 +1900,13 @@ public class Main {
 
         }
 
-        //buat muter ditempat
+        //buat muter
         if (window.isKeyPressed(GLFW_KEY_R)) {
+            // snowking
             for (Object child: mixue.get(0).getChildObject()){
                 tempCenterPoint = child.updateCenterPoint();
                 child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
-                //dikali -1 supaya dia balik 0,0
-
                 child.rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
-
                 child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
             }
 
@@ -1949,34 +1914,49 @@ public class Main {
             for (Object child: awan.get(0).getChildObject()){
                 tempCenterPoint = child.updateCenterPoint();
                 child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
-                //dikali -1 supaya dia balik 0,0
-
                 child.rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
-
                 child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
             }
 
-            // es krim muter
+            // es krim
+            tempCenterPointParent = eskrim.get(0).updateCenterPoint();
+            eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
+            eskrim.get(0).rotateObject((float) Math.toRadians(1f * -1), 0.0f, 1.0f, 0.0f);
+            eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
+        }
+
+        //buat muter kebalek
+        if (window.isKeyPressed(GLFW_KEY_T)) {
+            // snowking
+            for (Object child: mixue.get(0).getChildObject()){
+                tempCenterPoint = child.updateCenterPoint();
+                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
+                child.rotateObject((float) Math.toRadians(1f * -1), 0.0f, 1.0f, 0.0f);
+                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+            }
+
+            // awan
+            for (Object child: awan.get(0).getChildObject()){
+                tempCenterPoint = child.updateCenterPoint();
+                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
+                child.rotateObject((float) Math.toRadians(1f * -1), 0.0f, 1.0f, 0.0f);
+                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
+            }
+
+            // es krim
             tempCenterPointParent = eskrim.get(0).updateCenterPoint();
             eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
             eskrim.get(0).rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
             eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
-
-//            for (Object child: eskrim.get(0).getChildObject()){
-//                tempCenterPoint = child.updateCenterPoint();
-//                child.translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
-//                child.rotateObject((float) Math.toRadians(1f), 0.0f, 1.0f, 0.0f);
-//                child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
-//            }
         }
 
         // snow king dan es krim geser kanan kiri
         if (window.isKeyPressed(GLFW_KEY_D)) {
             if (default_position > limit *3) {
-                default_position -= 0.005f;
-                eskrim.get(0).translateObject((float) Math.toRadians(-direction), 0.0f, 0.0f);
+                default_position -= 0.02f;
+                eskrim.get(0).translateObject((float) Math.toRadians(-direction *2), 0.0f, 0.0f);
                 for (Object object : mixue) {
-                    object.translateObject((float) Math.toRadians(direction), 0.0f, 0.0f);
+                    object.translateObject((float) Math.toRadians(direction *2), 0.0f, 0.0f);
 //                    object.rotateObject((float) Math.toRadians(direction), 1f, 0f, 0f);
                 }
             }else{
@@ -1989,7 +1969,7 @@ public class Main {
         if (window.isKeyPressed(GLFW_KEY_K)) {
             tempCenterPointParent = eskrim.get(0).updateCenterPoint();
             eskrim.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
-            eskrim.get(0).scaleObject(0.99f, 0.99f, 0.99f);
+            eskrim.get(0).scaleObject(0.995f, 0.995f, 0.995f);
             eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
 
             for (Object child: mixue){
@@ -1999,7 +1979,6 @@ public class Main {
 
                 child.translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
             }
-
         }
 
         //memperbesar
@@ -2023,7 +2002,6 @@ public class Main {
 
             if (default_position > limit) {
                 default_position -= 0.005f;
-                System.out.println(default_position);
 
                 for(int i = 0 ; i <= 7; i++){
                     tempCenterPointParent = eskrim.get(0).updateCenterPoint();
@@ -2031,13 +2009,21 @@ public class Main {
                     eskrim.get(0).rotateObject((float) Math.toRadians(direction), 0.0f, 0.0f, 1.0f);
                     eskrim.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
 
+                    tempCenterPointParent = awan.get(0).updateCenterPoint();
+                    awan.get(0).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
+                    awan.get(0).rotateObject((float) Math.toRadians(direction), 0.0f, 0.0f, 1.0f);
+                    awan.get(0).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
+
+                    tempCenterPointParent = awan.get(1).updateCenterPoint();
+                    awan.get(1).translateObject(tempCenterPointParent.x * -1 , tempCenterPointParent.y * -1 , tempCenterPointParent.z * -1 );
+                    awan.get(1).rotateObject((float) Math.toRadians(direction), 0.0f, 0.0f, 1.0f);
+                    awan.get(1).translateObject(tempCenterPointParent.x * 1, tempCenterPointParent.y * 1, tempCenterPointParent.z * 1);
+
                     tempCenterPoint = mixue.get(0).getChildObject().get(0).getChildObject().get(3).updateCenterPoint();
                     mixue.get(0).getChildObject().get(0).getChildObject().get(3).translateObject(tempCenterPoint.x * -1 , tempCenterPoint.y * -1 , tempCenterPoint.z * -1 );
                     mixue.get(0).getChildObject().get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(direction), 0f, 0f, 1f);
                     mixue.get(0).getChildObject().get(0).getChildObject().get(3).rotateObject((float) Math.toRadians(direction), 0f, 1f, 0f);
                     mixue.get(0).getChildObject().get(0).getChildObject().get(3).translateObject(tempCenterPoint.x * 1, tempCenterPoint.y * 1, tempCenterPoint.z * 1);
-
-
                 }
             }
             else{
@@ -2046,10 +2032,6 @@ public class Main {
             }
 
         }
-        // muter ditempat
-//        if (window.isKeyPressed(GLFW_KEY_U)) {
-//            eskrim.get(0).rotateObject((float) Math.toRadians(0.5f), 0.0f, 1.0f, 0.0f);
-//        }
     }
 
 
