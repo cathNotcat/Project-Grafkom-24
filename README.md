@@ -1,4 +1,4 @@
-# UTS GRAFKOM B Kelompok 27
+# UTS GRAFKOM B Kelompok 24
 
 ## MIXUE
 
@@ -6,7 +6,7 @@ Link laporan: https://docs.google.com/document/d/1erln-S2hpE1GxFVRFscAZ3-F6zaJdV
 
 Link video: https://youtu.be/7jgZj0W6zgs
 
-Anggota kelompok 27: <br>
+Anggota kelompok 24: <br>
 Felicity Maureen - C14210014 <br>
 Catherine Rosalind - C14210100 <br>
 Cilmara Ekia Benita - C14210125 
